@@ -14,7 +14,7 @@ Certain genres may have a higher likelihood of happy or tragic endings. This que
 By analyzing movie endings across different time periods, we aim to identify historical trends and examine how societal shifts might influence the tone of a film’s conclusion.
        
 - What role do key personnel (actors and directors) play in shaping a movie's ending?
-       Do certain actors or directors have a preference for particular types of endings, and do their choices influence the overall predictability of a movie’s outcome?
+Do certain actors or directors have a preference for particular types of endings, and do their choices influence the overall predictability of a movie’s outcome?
        
 - Is there a correlation between a movie’s ending and its success (ratings, box office revenue, etc.)?
 We will explore whether happy or tragic endings have any impact on a movie's popularity or financial performance.
@@ -42,20 +42,20 @@ Certain studios might have brand identities tied to specific types of storytelli
      
 To answer our research questions and evaluate the predictability of movie endings, we will employ a combination of data processing, statistical analysis, and machine learning techniques. Our methods will include the following steps:
 
-Data Preprocessing and Cleaning
+**Data Preprocessing and Cleaning :**
 We will begin by cleaning the dataset to handle missing values, standardize categorical fields (e.g., genre, country), and normalize numerical data (e.g., ratings, box office revenues).
 
-Exploratory Data Analysis (EDA)
+**Exploratory Data Analysis (EDA):**
 EDA will help us identify initial patterns and trends. We will use visualization techniques to understand distributions and relationships, such as the prevalence of happy vs. tragic endings across genres, time periods, and countries. We will also examine the evolution of movie endings over time, highlighting shifts or patterns that may align with societal changes or cinematic trends.
 
-Statistical Analysis
+**Statistical Analysis:**
 To evaluate relationships between movie characteristics and ending types, we will apply statistical tests. For example, chi-square tests could help determine if certain genres are more likely to have specific endings, and correlation analysis will help assess the relationship between ending types and success metrics (e.g., ratings).
 We may also use time-series analysis to examine how endings have evolved over time, as well as cross-country comparisons to assess cultural influences on endings.
 
-Feature Engineering
+**Feature Engineering:**
 We will choose features from the dataset that are potentially predictive of movie endings. This may include genre-based features, director and actor popularity, box office success, ratings, and country-specific indicators.
 
-Predictive Modeling
+**Predictive Modeling:**
 Using machine learning models (e.g., logistic regression, decision trees, or support vector machines), we will attempt to predict the type of ending based on available features. We will train and test our models on a portion of the dataset to evaluate their predictive accuracy.
 We may experiment with ensemble models (e.g., random forests, gradient boosting) to improve accuracy and interpretability, and perform hyperparameter tuning to optimize model performance.
 
