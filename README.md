@@ -1,9 +1,9 @@
  **End of a Movie: Predictable or Not?**  
 
-   - **Abstract**  
+**Abstract**  
      This project explores the extent to which a movie’s ending can be predicted using various factors from our dataset, such as genre, actors, directors, time period, and other metrics like ratings and box office performance. We aim to analyze patterns and correlations that may reveal underlying trends in movie endings and examine how societal and historical shifts might influence these trends. Additionally, we will explore variations in endings across different countries, hypothesizing that cultural factors play a role in shaping audience expectations, consequently, the types of endings filmmakers choose. Ultimately, this project seeks to answer: can we foresee a film's ending before watching it? This exploration offers valuable insights into audience preferences, cultural influences, and the changing dynamics of the film industry.
 
-   - **Research Questions**
+**Research Questions**
 
      To guide our analysis and improve our ability to predict movie endings, we will address the following questions:
      
@@ -35,10 +35,10 @@ Certain studios might have brand identities tied to specific types of storytelli
 
 
 
-   - **Proposed Additional Datasets (if any)**  
+**Proposed Additional Datasets (if any)**  
      If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format).
 
-   - **Methods**  
+**Methods**  
      
      To answer our research questions and evaluate the predictability of movie endings, we will employ a combination of data processing, statistical analysis, and machine learning techniques. Our methods will include the following steps:
 
@@ -59,7 +59,7 @@ We may also use time-series analysis to examine how endings have evolved over ti
 Using machine learning models (e.g., logistic regression, decision trees, or support vector machines), we will attempt to predict the type of ending based on available features. We will train and test our models on a portion of the dataset to evaluate their predictive accuracy.
 We may experiment with ensemble models (e.g., random forests, gradient boosting) to improve accuracy and interpretability, and perform hyperparameter tuning to optimize model performance.
 
-   - **Proposed Timeline**  
+**Proposed Timeline**  
 
 
 | **Week** | **Tasks**                                                                                                                                                        |
@@ -80,7 +80,7 @@ We may experiment with ensemble models (e.g., random forests, gradient boosting)
 |          | - Review and revise all components of the project.                                                                                                              |
 
 
-   - **Questions for TAs (optional)**  
+**Questions for TAs (optional)**  
      If you have specific questions for the teaching assistants regarding the project, include them here.
 
 2. **GitHub Repository Structure**:  
