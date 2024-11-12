@@ -1,7 +1,8 @@
 # **End of a Movie: Predictable or Not?**  
 
 ### Abstract
-     This project explores the extent to which a movie’s ending can be predicted using various factors from our dataset, such as genre, actors, directors, time period, and other metrics like ratings and box office performance. We aim to analyze patterns and correlations that may reveal underlying trends in movie endings and examine how societal and historical shifts might influence these trends. Additionally, we will explore variations in endings across different countries, hypothesizing that cultural factors play a role in shaping audience expectations, consequently, the types of endings filmmakers choose. Ultimately, this project seeks to answer: can we foresee a film's ending before watching it? This exploration offers valuable insights into audience preferences, cultural influences, and the changing dynamics of the film industry.
+
+This project explores the extent to which a movie’s ending can be predicted using various factors from our dataset, such as genre, actors, directors, time period, and other metrics like ratings and box office performance. We aim to analyze patterns and correlations that may reveal underlying trends in movie endings and examine how societal and historical shifts might influence these trends. Additionally, we will explore variations in endings across different countries, hypothesizing that cultural factors play a role in shaping audience expectations, consequently, the types of endings filmmakers choose. Ultimately, this project seeks to answer: can we foresee a film's ending before watching it? This exploration offers valuable insights into audience preferences, cultural influences, and the changing dynamics of the film industry.
 
 ### Research Questions
 
@@ -36,7 +37,7 @@ Certain studios might have brand identities tied to specific types of storytelli
 
 
 ### Proposed Additional Datasets (if any) 
-     If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format).
+If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format).
 
 ### Methods 
      
