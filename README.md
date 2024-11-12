@@ -22,7 +22,7 @@
      - Do cultural differences influence the type of movie ending? Are there notable differences in the types of endings preferred or produced in different countries, suggesting cultural factors at play?
     
      - Do budget and production scale affect the type of ending chosen?
-      Exploring whether high-budget films tend to favor certain endings (e.g., happy endings for wider audience appeal) could reveal if financial considerations impact storytelling choices.
+       Exploring whether high-budget films tend to favor certain endings (e.g., happy endings for wider audience appeal) could reveal if financial considerations impact storytelling choices.
 
      - How do movie endings vary by film length ?
        This question would explore whether movies of different lengths (e.g., short vs. feature-length) tend to have different types of endings.
@@ -31,7 +31,7 @@
        Investigating whether franchise movies are more likely to have open-ended or happy endings to encourage future installments could reveal a unique trend in storytelling within cinematic universes.
        
      - Is there a connection between production studios and the type of endings their movies typically have?
-Certain studios might have brand identities tied to specific types of storytelling. For example, do studios known for family-friendly content favor happy endings?
+       Certain studios might have brand identities tied to specific types of storytelling. For example, do studios known for family-friendly content favor happy endings?
 
 
 
