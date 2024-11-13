@@ -8,30 +8,30 @@ This project explores the extent to which a movie’s ending can be predicted us
 
 To guide our analysis and improve our ability to predict movie endings, we will address the following questions:
      
-- How does the genre of a movie influence the type of ending it has (happy, tragic, open-ended)?
+1. How does the genre of a movie influence the type of ending it has (happy, tragic, open-ended)?
 Certain genres may have a higher likelihood of happy or tragic endings. This question will help us understand how genre conventions shape audience expectations.
        
-- How have happy and tragic endings evolved over time?
+2. How have happy and tragic endings evolved over time?
 By analyzing movie endings across different time periods, we aim to identify historical trends and examine how societal shifts might influence the tone of a film’s conclusion.
        
-- What role do key personnel (actors and directors) play in shaping a movie's ending?
+3. What role do key personnel (actors and directors) play in shaping a movie's ending?
 Do certain actors or directors have a preference for particular types of endings, and do their choices influence the overall predictability of a movie’s outcome?
        
-- Is there a correlation between a movie’s ending and its success (ratings, box office revenue, etc.)?
+4. Is there a correlation between a movie’s ending and its success (ratings, box office revenue, etc.)?
 We will explore whether happy or tragic endings have any impact on a movie's popularity or financial performance.
      
-- Do cultural differences influence the type of movie ending? Are there notable differences in the types of endings preferred or produced in different countries, suggesting cultural factors at play?
+5. Do cultural differences influence the type of movie ending? Are there notable differences in the types of endings preferred or produced in different countries, suggesting cultural factors at play?
     
-- Do budget and production scale affect the type of ending chosen?
+6. Do budget and production scale affect the type of ending chosen?
 Exploring whether high-budget films tend to favor certain endings (e.g., happy endings for wider audience appeal) could reveal if financial considerations impact storytelling choices.
 
-- How do movie endings vary by film length ?
+7. How do movie endings vary by film length ?
 This question would explore whether movies of different lengths (e.g., short vs. feature-length) tend to have different types of endings.
 
-- Do sequels or franchise movies follow different patterns in their endings compared to standalone films?
+8. Do sequels or franchise movies follow different patterns in their endings compared to standalone films?
 Investigating whether franchise movies are more likely to have open-ended or happy endings to encourage future installments could reveal a unique trend in storytelling within cinematic universes.
        
-- Is there a connection between production studios and the type of endings their movies typically have?
+9. Is there a connection between production studios and the type of endings their movies typically have?
 Certain studios might have brand identities tied to specific types of storytelling. For example, do studios known for family-friendly content favor happy endings?
 
 
