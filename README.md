@@ -37,6 +37,11 @@ Certain studios might have brand identities tied to specific types of storytelli
 
 
 ### Proposed Additional Datasets (if any) 
+
+We employ an additional dataset The Movie Database (TMDb) to enhance our analysis and provide a more comprehensive understanding of movie endings. This dataset contains information on movies, including runtime, ratings, revenue, crew members, and actors. We will merge this dataset with the data we have to enrich our analysis and explore additional factors that may influence movie endings.
+
+We use the [TMDb API](https://developer.themoviedb.org/docs/getting-started) to access the dataset and retrieve relevant information. After cleaning and preprocessing the data, we will merge it with our existing dataset to create a more comprehensive dataset for analysis.
+
 If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format).
 
 ### Methods 
