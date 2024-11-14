@@ -42,7 +42,7 @@ We employ an additional dataset The Movie Database (TMDb) to enhance our analysi
 
 We use the [TMDb API](https://developer.themoviedb.org/docs/getting-started) to access the dataset and retrieve relevant information. After cleaning and preprocessing the data, we will merge it with our existing dataset to create a more comprehensive dataset for analysis.
 
-If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format).
+<!-- If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format). -->
 
 ### Methods 
      
