@@ -8,7 +8,7 @@ This project explores the extent to which a movie’s ending can be predicted us
 
 To guide our analysis and improve our ability to predict movie endings, we will address the following questions:
      
-1. How does the genre of a movie influence the type of ending it has (happy, tragic, open-ended)?
+1. How does the genre of a movie influence the type of ending it has (happy, tragic, neutral)?
 Certain genres may have a higher likelihood of happy or tragic endings. This question will help us understand how genre conventions shape audience expectations.
        
 2. How have happy and tragic endings evolved over time?
