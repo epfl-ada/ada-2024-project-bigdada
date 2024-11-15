@@ -7,3 +7,5 @@ Data/MovieSummaries/src/data/movie_data_from_tmdb.pkl
 movie_data_from_tmdb.pkl
 movie_data_from_tmdb_only_id.pkl
 Data/MovieSummaries/plot_summaries.txt
+Data/ICBe/ICBe_V1.1_crises_markdown.Rds
+Data/ICBe/ICBe_V1.1_events_agreed.Rds
