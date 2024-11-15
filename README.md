@@ -53,7 +53,7 @@ This unified dataset allows us to robustly connect movies to historical events. 
 - We minimized the number of movies without matching events. Even with a threshold of **200 related events per movie**, the dataset still includes over **12,000 movies**, ensuring a wealth of data for meaningful analysis.
 
 Further analysis will focus on investigating correlations between movies and historical events through various approaches:
-1. **Temporal Analysis**: Examine how production delays influence correlations by shifting event timelines (`x` years) and clustering data into time periods (e.g., decades).
+1. Investigate if there is an overall correlation between the happy endings of movies and global conflicts or wars. Account for production delays by shifting the timelines of movies and events by x years to identify where the strongest correlation lies. Possibly 'x' could be determined using a mean production time or finding precise data for the production of eahc movie. This will require to perform temporal analysis by clustering events and movies into defined time periods (e.g., decades).
 2. **Geographic Insights**: Explore regional and country-level correlations to identify whether specific regions or nations are disproportionately reflected in movies.
 3. **Thematic Connections**: Analyze if movies with themes similar to historical events (e.g., war, diplomacy) reflect the outcomes or nature of those events in their narratives and endings.
 4. **Impact of Crisis Severity**: Investigate whether movies produced during or after high-fatality crises tend to have darker or more reflective endings.
