@@ -139,12 +139,3 @@ We may experiment with ensemble models (e.g., random forests, gradient boosting)
      ├── .gitignore                  <- List of files ignored by git
      ├── pip_requirements.txt        <- File for installing python dependencies
      └── README.md
-
-4. **Notebook for Initial Results**:  
-   Prepare a Jupyter Notebook that presents the initial results of your analysis. This notebook will be assessed on:
-   
-   - **Correctness**: Accurate implementation of methods and analyses.
-   - **Code Quality**: Well-organized, readable, and efficient code.
-   - **Textual Descriptions**: Clear and concise explanations of your results and methods.
-   
-   The main analysis logic should be contained in external scripts or modules that are referenced within the notebook.
