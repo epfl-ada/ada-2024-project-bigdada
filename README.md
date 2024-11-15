@@ -119,7 +119,7 @@ We may experiment with ensemble models (e.g., random forests, gradient boosting)
      pip install -r pip_requirements.txt
      How to use the library
 
-**Dowload the CMU Movies Dataset and extract the folder in the 'Data' folder**
+**Dowload the CMU Movies Dataset and extract the folder in the 'Data' folder.**
 
 
 # Project Structure:
