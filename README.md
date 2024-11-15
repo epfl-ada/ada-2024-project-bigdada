@@ -47,12 +47,16 @@ From this dataset, we incorporated two main files:
 
 These files were merged to create a unified dataset that captures:
 - **Key Attributes**: Crisis ID, Crisis Title, Start Year, End Year, Event Type, Fatalities, and Actors (Countries).
-- **Temporal Coverage**: Spanning from 1918 to 2015, aligning well with the movie release years in our dataset.
+- **Temporal Coverage**: 450 crisis events spanning from 1918 to 2015, aligning well with the movie release years in our dataset.
 
 This unified dataset allows us to robustly connect movies to historical events. For example:
-- We minimized the number of movies without matching events. Even with a high threshold of **200 related events per movie**, the dataset still includes over **12,000 movies**, ensuring a wealth of data for meaningful analysis.
-- The ICBe dataset provides detailed coverage of 450 crises, enabling a rich foundation for exploring correlations between historical events and cinematic narratives.
+- We minimized the number of movies without matching events. Even with a threshold of **200 related events per movie**, the dataset still includes over **12,000 movies**, ensuring a wealth of data for meaningful analysis.
 
+Further analysis will focus on investigating correlations between movies and historical events through various approaches:
+1. **Temporal Analysis**: Examine how production delays influence correlations by shifting event timelines (`x` years) and clustering data into time periods (e.g., decades).
+2. **Geographic Insights**: Explore regional and country-level correlations to identify whether specific regions or nations are disproportionately reflected in movies.
+3. **Thematic Connections**: Analyze if movies with themes similar to historical events (e.g., war, diplomacy) reflect the outcomes or nature of those events in their narratives and endings.
+4. **Impact of Crisis Severity**: Investigate whether movies produced during or after high-fatality crises tend to have darker or more reflective endings.
 
 <!-- If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format). -->
 
