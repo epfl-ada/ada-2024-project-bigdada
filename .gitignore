@@ -3,4 +3,4 @@
 *.DS_Store?
 .idea
 .idea/
-Data/MovieSummaries/
+Data/MovieSummaries/src/data/movie_data_from_tmdb.pkl
