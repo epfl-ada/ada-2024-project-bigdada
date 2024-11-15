@@ -39,6 +39,21 @@ We employ an additional dataset The Movie Database (TMDb) to enhance our analysi
 
 We use the [TMDb API](https://developer.themoviedb.org/docs/getting-started) to access the dataset and retrieve relevant information. After cleaning and preprocessing the data, we will merge it with our existing dataset to create a more comprehensive dataset for analysis.
 
+We utilized the **ICBe dataset**, a comprehensive resource on international crises, sourced from the [ICBe GitHub Repository](https://github.com/CenterForPeaceAndSecurityStudies/ICBEdataset). This dataset provides detailed information on crisis events, their associated actors, and key metadata, making it invaluable for analyzing the interplay between historical events and movies.
+
+From this dataset, we incorporated two main files:
+- **`ICBe_V1.1_events_agreed.Rds`**: Includes detailed information on event actors, timelines, and conditions, such as interactions, fatalities, military forces, and cooperative or antagonistic actions.
+- **`ICBe_V1.1_crises_markdown.Rds`**: Contains crisis-level summaries, with a unique crisis identifier (`crisno`), geographic regions, actors involved, and narrative overviews.
+
+These files were merged to create a unified dataset that captures:
+- **Key Attributes**: Crisis ID, Crisis Title, Start Year, End Year, Event Type, Fatalities, and Actors (Countries).
+- **Temporal Coverage**: Spanning from 1918 to 2015, aligning well with the movie release years in our dataset.
+
+This unified dataset allows us to robustly connect movies to historical events. For example:
+- We minimized the number of movies without matching events. Even with a high threshold of **200 related events per movie**, the dataset still includes over **12,000 movies**, ensuring a wealth of data for meaningful analysis.
+- The ICBe dataset provides detailed coverage of 450 crises, enabling a rich foundation for exploring correlations between historical events and cinematic narratives.
+
+
 <!-- If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format). -->
 
 ### Methods 
