@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File 005 – The Productions</title>
+    <link rel="stylesheet" href="../style.css"> 
+
+    <!-- Adding Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+    <div id="menu" class="menu">
+        <ul>
+            <li><a href="../index.html">Home – Agency Debriefing</a></li>
+            <li><a href="file001.html">File 001 – Genres and Their Suspect Conventions</a></li>
+            <li><a href="file002.html">File 002 – Eras and Their Well-Kept Secrets</a></li>
+            <li><a href="file003.html">File 003 – The Accomplices: Actors and Directors</a></li>
+            <li><a href="file004.html">File 004 – The Motive: Cultural Differences</a></li>
+            <li><a href="file005.html">File 005 – Productions</a></li>
+            <li><a href="file006.html">File 005 – Score</a></li>
+            <li><a href="conclusion.html">The Epilogue</a></li>
+        </ul>
+    </div>
+
+    <div class="top-bar">
+        <i class="fas fa-clapperboard logo"></i>
+        <p>Mission Ada: Done by the BigDada team</p>
+        <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+    </div>
+
+    <header class="header">
+        <!-- Change the header image and the title here -->
+        <img src="../assets/img/header_1.png" alt="Header Banner" class="header-img">
+        <div class="header-overlay">
+            <h1>File 005 – The Productions</h1>
+            <p>Here, we explore the relationship between the prodcutions and happy endings</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="file005" class="section">
+            <h3>Productions</h3>
+            <p>
+                Dans cette enquête, les maisons de production se sont révélées être des acteurs clés dans l'orientation des fins des films. 
+                À l'image de suspects bien établis, certaines productions affichent des tendances marquées. 
+                Notre enquête nous a menés dans les coulisses des productions. Et là, sous les projecteurs tamisés, 
+                les corrélations sont apparues comme des empreintes digitales sur une scène de crime...
+            </p>
+        
+            <iframe src="../assets/img/plot_interactive_5_.html" 
+                style="width:100%; max-width:1000px; height:400px; border:none; display:block; margin: 20px auto; overflow:hidden;">
+            </iframe>
+        
+            <p>
+                Un élément clé de notre enquête réside dans le graphique interactif présenté ci-dessus. Celui-ci met en lumière les 10 productions 
+                ayant obtenu les <strong>meilleurs scores</strong> en moyenne (celles qui favorisent le plus souvent des fins heureuses), ainsi que les 
+                10 productions avec les <strong>scores les plus faibles</strong>, tendant à éviter les dénouements joyeux. 
+                Ces résultats offrent une perspective fascinante : les choix narratifs d'une poignée de studios semblent être des forces majeures façonnant 
+                l'expérience cinématographique.
+            </p>
+        
+            <p>
+                Mais notre enquête ne s'est pas arrêtée là. Pour aller plus loin, nous avons appliqué une analyse ANOVA afin de tester 
+                si les différences observées entre les productions étaient statistiquement significatives. Les résultats ont confirmé nos soupçons :
+                même en imposant un seuil strict d’un minimum de 100 films par production, les différences restent <strong>significatives</strong>. 
+                C’est comme si chaque maison de production possédait une empreinte unique, influençant directement le type de dénouement.
+            </p>
+        
+            <p>
+                Ces observations nous rappellent que, derrière chaque <em>"The End"</em>, il y a des choix, des chiffres et des visions du monde. 
+                Le cinéma n’est pas qu’un art : c’est un <strong>jeu d’équilibre</strong> entre ce que le public espère et ce que les créateurs veulent montrer.
+            </p>
+
+            <div class="book-page" id="page1">
+                <p>Par exemple, le studio Beta, connu pour ses productions sentimentales, présente une moyenne impressionnante de 90 % de happy endings, tandis que le studio Zeta se distingue par des dénouements dramatiques, avec seulement 15 % d’histoires finissant bien.</p>
+            </div>
+            <div class="book-page" id="page2">
+                <p>Le studio Alpha, ayant un large catalogue de films populaires, présente 87 % de happy endings sur un total de 150 films, alors que le studio Omega n’en affiche que 12 % sur 120 films.</p>
+            </div>
+            <!-- Ajouter d'autres pages de production ici -->
+
+
+
+            <!-- Controls for navigation -->
+            <div class="book-navigation">
+                <button class="prev" onclick="changePage(-1)">&#10094; Prev</button>
+                <button class="next" onclick="changePage(1)">Next &#10095;</button>
+            </div>
+
+       
+        </section> 
+        
+        
+
+    </main>
+
+    <nav>
+        <ul>
+            <li><a href="file004.html">Previous : Cultural differences</a></li> <!-- Lien vers la page d'accueil -->
+            <li><a href="conclusion.html">Next: Conclusion</a></li> <!-- Lien vers la page suivante -->
+        </ul>
+    </nav>
+
+    <script src="../scripts.js"></script>
+
+
+</body>
+</html>

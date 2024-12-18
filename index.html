@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission: Happy Endings</title>
+    <link rel="stylesheet" href="style.css"> 
+
+    <!-- Adding Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="top-bar">
+        <i class="fas fa-clapperboard logo"></i>
+        <p>Mission Ada: Done by the BigDada team</p>
+        <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+    </div>
+
+    <!-- Hidden menu -->
+    <div id="menu-overlay" class="menu-overlay"></div>
+     <div id="menu" class="menu">
+         <ul>
+             <li><a href="sections/file001.html">File 001 – Genres and Their Suspect Conventions</a></li>
+             <li><a href="sections/file002.html">File 002 – Eras and Their Well-Kept Secrets</a></li>
+             <li><a href="sections/file003.html">File 003 – The Accomplices: Actors and Directors</a></li>
+             <li><a href="sections/file004.html">File 004 – The Motive: Cultural Differences</a></li>
+             <li><a href="sections/file005.html">File 005 – Productions</a></li>
+             <li><a href="sections/file006.html">File 006 – Score</a></li>
+             <li><a href="sections/conclusion.html">The Epilogue</a></li>
+         </ul>
+     </div>
+
+    
+    <header class="header">
+        <img src="assets/img/header_1.png" alt="Header Banner" class="header-img">
+        <div class="header-overlay">
+            <h1>Welcome to the Data-ctive Agency</h1>
+            <p>Uncover the mysteries behind movie endings!</p>
+        </div>
+    </header>
+
+    <main>
+
+        
+
+        <div id="introduction"></div>
+        
+    
+
+        <section id="files" class="section">
+            <h3>Dive into the investigation: choose a file to begin uncovering the secrets behind your favorite movie endings.</h3>
+            
+            <div class="table-background">
+                <div class="file" onclick="window.location.href='sections/file001.html'" style="top: 8%; left: 15%;">
+                    <img src="assets/img/folder_icon.png" alt="File 001" class="file-icon">
+                    <span class="file-text">File 001</span>
+                </div>
+                <div class="file" onclick="window.location.href='sections/file002.html'" style="top: 25%; left: 35%;">
+                    <img src="assets/img/folder_icon.png" alt="File 002" class="file-icon">
+                    <span class="file-text">File 002</span>
+                </div>
+                <div class="file" onclick="window.location.href='sections/file003.html'" style="top: 60%; left: 75%;">
+                    <img src="assets/img/folder_icon.png" alt="File 003" class="file-icon">
+                    <span class="file-text">File 003</span>
+                </div>
+                <div class="file" onclick="window.location.href='sections/file004.html'" style="top: 12%; left: 77%;">
+                    <img src="assets/img/folder_icon.png" alt="File 004" class="file-icon">
+                    <span class="file-text">File 004</span>
+                </div>
+                <div class="file" onclick="window.location.href='sections/file005.html'" style="top: 65%; left: 20%;">
+                    <img src="assets/img/folder_icon.png" alt="File 005" class="file-icon">
+                    <span class="file-text">File 005</span>
+                </div>
+                <div class="file" onclick="window.location.href='sections/file006.html'" style="top: 75%; left: 45%;">
+                    <img src="assets/img/folder_icon.png" alt="File 006" class="file-icon">
+                    <span class="file-text">File 006</span>
+                </div>
+            </div>
+        </section>
+        
+
+    </main>
+
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>
