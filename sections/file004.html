@@ -9,7 +9,23 @@
 
     <!-- Adding Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Ajout des styles spécifiques pour cette page -->
+    <style>
+        .section {
+            display: flex;
+            flex-wrap: wrap; /* Permet aux éléments de se placer en colonne sur petits écrans */
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .section div, .section iframe {
+            flex: 1;
+            min-width: 300px; /* Minimum pour que le contenu reste lisible */
+        }
+    </style>
 </head>
+
 
 
 <body>
