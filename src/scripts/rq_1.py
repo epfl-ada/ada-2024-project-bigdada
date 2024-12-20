@@ -32,17 +32,17 @@ copper_interpolated = mcolors.LinearSegmentedColormap.from_list("copper", copper
 def load_data(file_path):
     return pd.read_csv(file_path, sep='\t')
 
-
 # Function to clean genres and filter based on frequency
 def clean_and_filter_genres(movies, threshold=500):
+
     #Drop rows with no score
     movies['Movie genres'] = movies['Movie genres'].str.lower()
     genre_counts = movies['Movie genres'].str.split(', ').explode().value_counts().reset_index()
     genre_counts.columns = ['Genre', 'Number of movies']
     genre_counts = genre_counts.sort_values(by='Number of movies', ascending=False)
-    print("Number of genres:", len(genre_counts))
+    print("Number of genres in the dataset:", len(genre_counts))
     genre_counts = genre_counts[genre_counts['Number of movies'] > threshold]
-    print("Number of genres of our interest for our analysis: ", len(genre_counts))
+    print("Number of genres we keep for our analysis:", len(genre_counts), "(Genres with more than", threshold, "movies)")
     # New dataframe 
     movies_genres = movies.copy()
     movies_genres = movies_genres.dropna(subset=['Movie genres'])
@@ -50,7 +50,6 @@ def clean_and_filter_genres(movies, threshold=500):
     movies_genres['Movie genres'] = movies_genres['Movie genres'].str.split(', ')
     movies_genres = movies_genres.explode('Movie genres')
     movies_genres = movies_genres.reset_index(drop=True)
-    movies_genres['Movie genres'] = movies_genres['Movie genres'].str.lower()
 
     # Remove the rows of the movies_genres dataframe which genre is not in the genre_counts dataframe
     movies_genres = movies_genres[movies_genres['Movie genres'].isin(genre_counts['Genre'])]
@@ -62,17 +61,6 @@ def clean_and_filter_genres(movies, threshold=500):
 def plot_genre_counts(movies_genres):
     sample_sizes = movies_genres.groupby('Movie genres').size().reset_index(name='Count')
     sample_sizes = sample_sizes.sort_values(by='Count', ascending=False)
-    # Define copper colorscale in valid format
-    copper_colorscale = [
-        (255 / 255, 242 / 255, 230 / 255),
-        (230 / 255, 169 / 255, 148 / 255),
-        (202 / 255, 94 / 255, 91 / 255),
-        (153 / 255, 51 / 255, 51 / 255),
-        (102 / 255, 0 / 255, 0 / 255)
-    ]
-
-    # Create a LinearSegmentedColormap
-    copper_interpolated = mcolors.LinearSegmentedColormap.from_list("copper", copper_colorscale)
 
     # Interpolate colors for the genres
     num_genres = sample_sizes.shape[0]
@@ -134,19 +122,18 @@ def plot_average_ending_score(movies_genres):
 
     fig.show()
 
-
 # Function to create a plot for a specific genre and score distribution
 def plot_genre_score_distribution(movies_genres, selected_genre):
     filtered_df = movies_genres[movies_genres['Movie genres'] == selected_genre]
-    score_counts = filtered_df.groupby('Rounded2 Score').size().reset_index(name='Number of Movies')
+    score_counts = filtered_df.groupby('Rounded Score').size().reset_index(name='Number of Movies')
 
     fig = px.bar(
         score_counts,
-        x='Rounded2 Score',
+        x='Rounded Score',
         y='Number of Movies',
-        hover_data={'Rounded2 Score': True, 'Number of Movies': True},
-        title=f"Movie Score Distribution for Genre: {selected_genre}",
-        labels={'Rounded2 Score': 'Score', 'Number of Movies': 'Number of Movies'},
+        hover_data={'Rounded Score': True, 'Number of Movies': True},
+        title=f"Movie ending score distribution for the genre: {selected_genre}",
+        labels={'Rounded Score': 'Score', 'Number of Movies': 'Number of Movies'},
         color_discrete_sequence=['#b87333'],
         template="plotly_white"
     )
@@ -158,10 +145,11 @@ def plot_genre_score_distribution(movies_genres, selected_genre):
     )
 
     return fig
+
 # Function to handle the interactive dropdown for genre selection
 def interactive_distribution_genre_plot(movies_genres):
     # Round scores to 2 decimals to aggregate close values
-    movies_genres['Rounded2 Score'] = movies_genres['Score'].round(2)
+    movies_genres['Rounded Score'] = movies_genres['Score'].round(2)
     genres = movies_genres['Movie genres'].unique()
 
     genre_dropdown = widgets.Dropdown(
@@ -194,11 +182,11 @@ def group_scores_by_genre(movies_genres):
 
 # Function to perform the Shapiro-Wilk test for normality
 def shapiro_wilk_test(groups):
-    print("\nNormality Test:")
+    print("\nPerforming Shapiro-Wilk test for normality.")
     for i, group in enumerate(groups):
         if len(group) >= 3:  # Shapiro requires at least 3 data points
             stat, p = shapiro(group)
-            print("Performing Shapiro-Wilk test for normality")
+            #print("Performing Shapiro-Wilk test for normality")
             #print(f"Genre {i+1} (size={len(group)}) : W={stat:.3f}, p-value={p:.3f}")
         else:
             print("Not enough data for Shapiro-Wilk test.")
@@ -208,7 +196,7 @@ def levenes_test(groups):
 
     if len(groups) > 1:  # Levene requires at least two groups
         stat, p = levene(*groups)
-        print("\nHomogeneity of Variances Test (Levene)")
+        print("\nPerforming Levene's test for homogeneity of variances.")
         #print(f"Statistic={stat:.3f}, p-value={p:.3f}")
     else:
         print("\nNot enough groups to perform Levene's test.")
@@ -222,11 +210,11 @@ def perform_statistical_test(groups):
             # Use ANOVA if normality is satisfied
             stat, p = f_oneway(*groups)
             print("\n Normality condition satisfied, performed ANOVA Test.")
-            print(f"F-statistic={stat:.3f}, p-value={p:.3f}")
+            #print(f"F-statistic={stat:.3f}, p-value={p:.3f}")
         else:
             # Use Kruskal-Wallis if assumptions are violated
             stat, p = kruskal(*groups)
-            print("\nNormality condition not satisfied,performed Kruskal-Wallis Test (Non-parametric Alternative).")
+            print("\nAssumptions are violated, performed Kruskal-Wallis Test (non-parametric alternative to ANOVA).")
             #print(f"Statistic={stat:.3f}, p-value={p:.3f}")
     else:
         print("\nNot enough valid data or groups to perform statistical tests.")
@@ -238,7 +226,7 @@ def analyze_movie_genres(movies_genres):
     groups = group_scores_by_genre(movies_genres)
 
     # Step 2: Verify assumptions
-    print("\nStep 2: Checking Assumptions")
+    print("\nChecking Assumptions")
 
     # 2.1 Normality Test
     shapiro_wilk_test(groups)
@@ -298,3 +286,21 @@ def dunn_test_and_plot(movies_genres):
 
     # Show the heatmap
     heatmap.show()
+
+def balance_genres_with_bootstrap(movies_genres, n_samples=500):
+    balanced_data = []
+    for genre, group in movies_genres.groupby('Movie genres'):
+        scores = group['Score'].values
+        if len(scores) > n_samples:
+            # Bootstrap for large genres
+            resampled_scores = np.random.choice(scores, size=n_samples, replace=True)
+        else:
+            # Keep original data for smaller genres
+            resampled_scores = scores
+        balanced_data.append(pd.DataFrame({'Movie genres': genre, 'Score': resampled_scores}))
+    return pd.concat(balanced_data, ignore_index=True)
+
+def dunn_test_with_balanced_data(movies_genres, n_samples=500):
+    balanced_movies_genres = balance_genres_with_bootstrap(movies_genres, n_samples)
+    analyze_movie_genres(balanced_movies_genres)
+    dunn_test_and_plot(balanced_movies_genres)
