@@ -89,10 +89,12 @@ To evaluate relationships between movie characteristics and ending types, we app
 - Developed the structure of the website.  
 - Ensured consistent styling throughout the website to maintain a uniform appearance.
 - Updated the README
+- Write the conclusion
 
 ### 3. Nicolas  
 - Developed and implemented the solution for research question 2. 
-- Assisted in ensuring consistent styling across the website. 
+- Assisted in ensuring consistent styling across the website.
+- Write the conclusion
 
 ### 4. Marie  
 - Analyzed and documented the results for research question 1.  
