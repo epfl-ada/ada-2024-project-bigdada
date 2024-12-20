@@ -190,6 +190,21 @@ def analyze_movie_scores(MOVIE_DATASET):
     for quantile in [0.25, 0.5, 0.75]:
         print(f"{quantile*100:.0f}th Percentile: {quantiles[quantile][0]:<20} {quantiles[quantile][1]}")
 
+    group_counts = movies['in_collection'].value_counts()
+
+     # Filter movies that belong to a collection (franchise or series)
+    collection_movies = movies[movies['in_collection'] == 1]
+
+    # Filter movies that are standalone (not in any collection)
+    standalone_movies = movies[movies['in_collection'] == 0]
+
+    # Undersample the standalone films to match the number of collection films
+    standalone_movies_resampled = standalone_movies.sample(n=group_counts[1], random_state=42)
+
+    # Combine the undersampled standalone films with the collection films
+    movies_resampled = pd.concat([collection_movies, standalone_movies_resampled])
+
+
     # Plot barplots before and after undersampling
     plot_barplots_before_after_undersampling(movies_cleaned, movies_resampled)
 
