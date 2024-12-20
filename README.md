@@ -33,7 +33,7 @@ Investigating whether franchise movies are more likely to have open-ended or hap
        
 
 
-### Proposed Additional Datasets 
+### Additional Datasets 
 
 We employ an additional dataset The Movie Database (TMDb) to enhance our analysis and provide a more comprehensive understanding of movie endings. This dataset contains information on movies, including runtime, ratings, revenue, crew members, and actors. We will merge this dataset with the data we have to enrich our analysis and explore additional factors that may influence movie endings.
 
@@ -52,59 +52,53 @@ These files were merged to create a unified dataset that captures:
 This unified dataset allows us to robustly connect movies to historical events. For example:
 - We minimized the number of movies without matching events. Even with a threshold of **200 related events per movie**, the dataset still includes over **12,000 movies**, ensuring a wealth of data for meaningful analysis.
 
-Further analysis will focus on investigating correlations between movies and historical events through various approaches:
-1. Investigate if there is an overall correlation between the happy endings of movies and global conflicts or wars. Account for production delays by shifting the timelines of movies and events by x years to identify where the strongest correlation lies. Possibly 'x' could be determined using a mean production time or finding precise data for the production of eahc movie. This will require to perform temporal analysis by clustering events and movies into defined time periods (e.g., decades).
-2. **Geographic Insights**: Explore regional and country-level correlations to identify whether specific regions or nations are disproportionately reflected in movies.
-3. **Thematic Connections**: Analyze if movies with themes similar to historical events (e.g., war, diplomacy) reflect the outcomes or nature of those events in their narratives and endings.
-4. **Impact of Crisis Severity**: Investigate whether movies produced during or after high-fatality crises tend to have darker or more reflective endings.
+
 
 <!-- If you plan to use additional datasets, list them here, along with your approach to acquiring, managing, processing, and enriching them. Demonstrate that you have reviewed the relevant documentation and examples, and have a realistic expectation of what the data entails (considering factors like size and format). -->
 
-### Methods 
-     
-To answer our research questions and evaluate the predictability of movie endings, we will employ a combination of data processing, statistical analysis, and machine learning techniques. Our methods will include the following steps:
+Here’s the text translated into English and written in the past tense:  
 
-**Data Preprocessing and Cleaning :**
-We will begin by cleaning the dataset to handle missing values, standardize categorical fields (e.g., genre, country), and normalize numerical data (e.g., ratings, box office revenues).
+---
 
-**Exploratory Data Analysis (EDA):**
-EDA will help us identify initial patterns and trends. We will use visualization techniques to understand distributions and relationships, such as the prevalence of happy vs. tragic endings across genres, time periods, and countries. We will also examine the evolution of movie endings over time, highlighting shifts or patterns that may align with societal changes or cinematic trends.
+### **Methods**
 
-**Statistical Analysis:**
-To evaluate relationships between movie characteristics and ending types, we will apply statistical tests. For example, chi-square tests could help determine if certain genres are more likely to have specific endings, and correlation analysis will help assess the relationship between ending types and success metrics (e.g., ratings).
-We may also use time-series analysis to examine how endings have evolved over time, as well as cross-country comparisons to assess cultural influences on endings.
+To answer our research questions and evaluate the predictability of movie endings, we employed a combination of data processing, statistical analysis, and machine learning techniques. Our methods included the following steps:  
 
-**Feature Engineering:**
-We will choose features from the dataset that are potentially predictive of movie endings. This may include genre-based features, director and actor popularity, box office success, ratings, and country-specific indicators.
+**Data Preprocessing and Cleaning:**  
+We began by cleaning the dataset to handle missing values, standardize categorical fields (e.g., genre, country), and normalize numerical data (e.g., ratings, box office revenues).  
 
-**Predictive Modeling:**
-Using machine learning models (e.g., logistic regression, decision trees, or support vector machines), we will attempt to predict the type of ending based on available features. We will train and test our models on a portion of the dataset to evaluate their predictive accuracy.
-We may experiment with ensemble models (e.g., random forests, gradient boosting) to improve accuracy and interpretability, and perform hyperparameter tuning to optimize model performance.
+**Exploratory Data Analysis (EDA):**  
+We conducted EDA to identify initial patterns and trends. Visualization techniques were used to understand distributions and relationships, such as the prevalence of happy vs. tragic endings across genres, time periods, and countries. We also examined the evolution of movie endings over time, highlighting shifts or patterns that aligned with societal changes or cinematic trends.  
 
-### Proposed Timeline
+**Statistical Analysis:**  
+To evaluate relationships between movie characteristics and ending types, we applied statistical tests. For example, chi-square tests determined if certain genres were more likely to have specific endings, and correlation analysis assessed the relationship between ending types and success metrics (e.g., ratings).  
+ 
 
 
-| **Week** | **Tasks**                                                                                                                                                        |
-|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Week 1** | **Exploratory Data Analysis (EDA)**                                                                                                                             |
-|          | - Visualize the distribution of endings by genre, time period, and country.                                                                                     |
-|          | - Perform preliminary statistical tests to explore relationships between features and endings.                                                                  |
-|          | - Analyze and interpret the influence of features on movie endings (e.g., genre, director, actors).                                                              |
-| **Week 2** | **Model Development and Statistical Analysis**                                                                                                                  |
-|          | - Build initial predictive models (e.g., logistic regression, decision trees).                                                                                   |
-|          | - Tune hyperparameters, perform cross-validation, and assess model performance (accuracy, precision, recall).                                                    |
-| **Week 3** | **Advanced Modeling and Feature Refinement**                                                                                                                    |
-|          | - Test more complex models (e.g., random forests, gradient boosting).                                                                                           |
-|          | - Refine features and evaluate model performance.                                                                                                                |
-|          | - Perform additional statistical tests as needed (e.g., time-series, cross-country comparisons).                                                                 |
-| **Week 4** | **Finalizing Analysis and Report**                                                                                                                               |
-|          | - Polish visualizations and finalize documentation.                                                                                                            |
-|          | - Review and revise all components of the project.                                                                                                              |
+## Contributions of Team Members
+
+ Below is a detailed breakdown of roles and achievements:
 
 
-**Questions for TAs (optional)**  
-     If you have specific questions for the teaching assistants regarding the project, include them here.
 
+### 1. Xiangyu  
+- Responsible for analyzing and addressing research question 3 and 4.  
+ 
+### 2. Mylène  
+- Conducted in-depth analysis of research questions 6, 7, and 8.  
+- Developed the structure of the website.  
+- Ensured consistent styling throughout the website to maintain a uniform appearance.
+- Updated the README
+
+### 3. Nicolas  
+- Developed and implemented the solution for research question 2. 
+- Assisted in ensuring consistent styling across the website. 
+
+### 4. Marie  
+- Analyzed and documented the results for research question 1.  
+
+### 5. Charles  
+- Conducted the analysis and implementation for research question 4. 
 
 
 # How to run
@@ -124,18 +118,23 @@ We may experiment with ensemble models (e.g., random forests, gradient boosting)
 
 # Project Structure:
 
-     ├── data                        <- Project data files
+     ├── Data                      <- Project data files
+     │   ├── ICBe   
+     │   ├── MovieSummaries  
+     ├── layouts 
+     ├── assets 
+     │   ├── css   
+     │   ├── img  
+     │   ├── js  
+     ├── sections                  <- html file for each page 
+     ├── src                       <- Source code
+     │   ├── data                  <- created and uploaded data   
+     │   ├── scripts               <- scripts for research questions 
      │
-     ├── src                         <- Source code
-     │   ├── data                            <- Data directory
-     │   ├── models                          <- Model directory
-     │   ├── utils                           <- Utility directory
-     │   ├── scripts                         <- Shell scripts
-     │
-     ├── tests                       <- Tests of any kind
-     │
-     ├── results.ipynb               <- a well-structured notebook showing the results
-     │
-     ├── .gitignore                  <- List of files ignored by git
-     ├── pip_requirements.txt        <- File for installing python dependencies
+     ├── index.html                <- website's mainpage
+     ├── results.ipynb             <- a well-structured notebook showing the results
+     ├── scripts.js                <- scripts
+     ├── style.css                 <- website's style
+     ├── .gitignore                <- List of files ignored by git
+     ├── pip_requirements.txt      <- File for installing python dependencies
      └── README.md
