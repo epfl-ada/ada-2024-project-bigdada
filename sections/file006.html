@@ -62,13 +62,17 @@
                 style="width: 100%; border: none;">
             </iframe>
             <p>Mmmh... it is not a surprising result. Indeed, we can see that the genres with the highest ending scores are romantic comedies, musicals, children's movies and romance movies. On the other hand, most terrible ending movies are the horror movies, the psychological thrillers and the crime thrillers. Our prominent genre 'drama' doesn't have a particularly high or low ending score, probably because of how many movies it contains. So from the looks of it, the ending scores do differ from one genre to another and might be linked indeed! </p>
-            <p>Now that we have observed carefully the clues that we had, let's dig even deeer and see if we can find a true piece of evidence!</p>
+            <p>It's time to bring in our forensic expert – the Dunn test! Like a seasoned investigator, the Dunn test will carefully compare the genres to uncover significant differences in their ending scores. But before diving into this interrogation, we had to follow proper investigative protocols.</p>
+            <p>First, we checked whether our suspects (genres) followed a normal distribution using the Shapiro-Wilk test. The results? A clear violation of normality! This ruled out the possibility of using a straightforward ANOVA test to analyze the differences in ending scores.</p>
+            <p>So, we pivoted to a more robust approach – the Kruskal-Wallis test, perfect for handling such unruly data. <button onclick="showModal('kruskal')" class="info-btn">What is the Kruskal-Wallis Test?</button> This test confirmed that there is indeed a statistical significance in the distribution of ending scores across genres. Armed with this clue, we moved to the next stage: a pair-wise Dunn's test <button onclick="showModal('dunn')" class="info-btn">What is the Dunn's Test?</button> to uncover which genres have significant differences in their scores (p-value < 0.05).</p>
+            <p>Imagine each genre as a suspect in our case. The Dunn test interrogates these suspects, comparing their alibis (mean ending scores) and identifying the key outliers. Who’s responsible for the happiest endings? And which genres are leaving audiences in despair?</p>
+            <p>To visualize our findings, we've prepared a heatmap. This heatmap highlights the significant differences in ending scores between genres. Brighter colors indicate the genres that truly stand out in our interrogation. Let’s reveal the evidence:</p>
             <iframe 
                 id="iframe4" 
                 src="../assets/img/dunn_test.html" 
                 style="width: 100%; border: none;">
             </iframe>
-
+</script>
 <script>
     function resizeIframe(iframe) {
         iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
