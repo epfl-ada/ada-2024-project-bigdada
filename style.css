@@ -349,3 +349,14 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;  /* Centre horizontalement */
+    margin: 20px 0;          /* Ajoute un espace raisonnable au-dessus et en dessous */
+}
+img {
+    max-width: 100%;  /* Empêche l'image de dépasser la largeur du conteneur */
+    height: auto;     /* Maintient les proportions */
+}
+
