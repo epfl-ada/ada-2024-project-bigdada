@@ -48,22 +48,31 @@
     <main>
         <section>
 
-            <h2>Clues to the Puzzle: The Length of the Movie and Its Ending</h2>
+            <p style="font-size: 18px; font-weight: bold; text-align: center;">
+                Clues to the Puzzle: The Length of the Movie and Its Ending
+            </p>
+
             <p>As detectives on the case, we now turn our attention to a new lead: could a film's runtime provide clues about the tone of its ending? Is there a hidden connection between how long a movie runs and its likelihood of delivering a ‘happy ending’? This chapter invites us to unravel this mystery, examining whether the length of a movie influences its emotional resolution.</p>
            
-            <h3>The First Clue: Distribution of Scores by Film Length</h3>
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">The First Clue: Distribution of Scores by Film Length</h4>
+            
             <p>A preliminary analysis reveals a stark difference in scores between short and feature-length films. A boxplot comparison highlights whether these scores are similarly distributed or if they diverge significantly. Does the runtime dictate the likelihood of a happy ending, or do short films pack just as much emotional punch in their limited duration?</p>
             
             <iframe src="../assets/img/boxplot.html" 
                     style="width:100%; max-width:1000px; height:400px; border:none; display:block; margin: 20px auto; overflow:hidden;">
             </iframe>
+
+            Looking at the box plots, an intriguing observation emerges: the distributions of the short and long classes seem surprisingly similar. Hmm, something doesn't add up. Is this just a coincidence, or is there a deeper story behind the data?” Clearly, we need to dig deeper. It's time to roll up our sleeves and get to the bottom of the mystery.</p>
+
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">The Key Evidence: Statistical Testing</h4>
             
-            <h2>The Key Evidence: Statistical Testing</h2>
             <p>To uncover deeper insights, we employ statistical tests like the <strong>Mann-Whitney U test</strong>, probing whether the observed differences in scores between short and feature-length films are statistically significant. These tests provide crucial evidence: are the differences we observe just random noise, or is there an underlying pattern that ties runtime to emotional resolution?</p>
             
             <p>The results point to specific runtime thresholds where the differences in scores become statistically significant, suggesting that the length of a film might indeed influence its ending tone. But where exactly do these significant differences lie?</p>
             
-            <h3>The Significant Thresholds</h3>
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">The Significant Thresholds</h4>
+            
+            
             <p>Following the clues, we zero in on key runtime thresholds and uncover significant disparities between the "short" and "long" categories. Here's what we found:</p>
             <ul>
                 <li><strong>Threshold: 100, p-value: 0.0003</strong> - A major lead!</li>
@@ -74,7 +83,8 @@
             </ul>
             <p>These thresholds marked the spots where the data screamed, “Hey, something important is happening here!” Each p-value confirmed that these length divisions weren’t just random noise—they’re where the action is.</p>
             
-            <h3>The Evidence Board: A Graph of Means</h3>
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">The Evidence Board: A Graph of Means</h4>
+            
             <p>Our next step? Visualizing the clues. We plotted the mean values of the dependent variable for "short" and "long" films across different thresholds. Here's the breakdown:</p>
             <img src="../assets/img/graph_means_length.png" 
                 alt="Boxplot showing distribution of scores for short and long films" 
@@ -87,25 +97,28 @@
             </ul>
             <p>This chart is like our case map—pinpointing exactly where the "short" and "long" films start to diverge in ways that matter. Each significant threshold is a breadcrumb leading us to the bigger picture.</p>
             
-            <h3>The Investigation Unfolds: The Link Between Film Length and Ending Type</h3>
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">The Investigation Unfolds: The Link Between Film Length and Ending Type</h4>
+            
 
             <p>Our investigation into the link between film length and the likelihood of a "happy ending" continues to evolve. The clues are there, but like any good detective, we must carefully interpret every lead that appears in the data. Here’s what we’ve uncovered so far.</p>
 
-            <h3>The First Clues: Before the 190-Minute Threshold</h3>
+            <h4 style=" margin-top: 30px;">The First Clues: Before the 190-Minute Threshold</h4>
+           
             <p>The first clues suggest that, before reaching approximately 190 minutes, longer films seem more likely to have a "happy ending" compared to shorter films. A pattern emerges: longer films, with more time to develop plots and characters, tend to have a greater chance of ending on a positive note. The longer runtime allows for satisfying narrative resolutions, offering the audience a happy conclusion they expect.</p>
 
-            <h3>The Turning Point: After 190 Minutes, a Subtle but Important Shift</h3>
+            <h4 style=" margin-top: 30px;">The Turning Point: After 190 Minutes, a Subtle but Important Shift</h4>
             <p>However, this is where things get interesting. After about 190 minutes, the trend starts to shift slightly. Longer films seem less likely to deliver a "happy ending." This could be due to several factors. First, films exceeding this length (especially those over 200 minutes) are less common, which could skew the average. The longer a film is, the more likely it becomes to have a more complex narrative with less predictable, often more nuanced or open-ended conclusions. Filmmakers of very long movies may opt for dramatic or ambiguous endings, straying away from traditional "happy endings."</p>
 
-            <h3>A Potential Bias: The Impact of Downsampling</h3>
+            <h4 style=" margin-top: 30px;">A Potential Bias: The Impact of Downsampling</h4>
             <p>It’s important to note that this observation might be influenced by the way we’ve handled the data. We may have performed some downsampling on certain very long films, which could have altered the distribution of the data and affected the calculated average. If the number of ultra-long films in our sample is low, this could bias the results. Longer films might have a more significant impact than our current data suggests, and a more detailed analysis could provide a clearer picture of how film length truly influences endings.</p>
 
-            <h3>The Verdict: An Intriguing Lead, but Not Solved Yet</h3>
+            <h4 style=" margin-top: 30px;">The Verdict: An Intriguing Lead, but Not Solved Yet</h4>
             <p>The 190-minute threshold isn’t a precise point but rather a range where the trend begins to reverse. Longer films generally have a "happy ending" before this threshold, but after 190 minutes, a reverse trend begins to appear. However, this observation should be taken with caution: the small number of very long films and the potential biases from downsampling make this conclusion less definitive.</p>
 
             <p>We’ve uncovered valuable clues, but the mystery is far from solved. We’ll need to continue exploring these leads and perhaps refine our analysis to gain a more accurate understanding of the true impact of film length on the nature of endings.</p>
         
-            <h2>Next Steps: Searching for More Clues</h2>
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">Next Steps: Searching for More Clues</h4>
+     
             <p>Our investigation is far from over. As we proceed to explore other factors such as genre, cast, and cultural influence, we will continue to look for additional clues to understand the intricate relationship between movie length and the nature of their endings. Stay tuned as we uncover the final pieces of the puzzle!</p>
         </section>
         
