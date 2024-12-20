@@ -39,15 +39,249 @@
         <img src="../assets/img/header_1.png" alt="Header Banner" class="header-img">
         <div class="header-overlay">
             <h1>Eras</h1>
-            <p>Here, we explore the relationship between eras and happy endings</p>
+            <p>Here, we uncover the changes in cinematic endings over the decades</p>
         </div>
     </header>
 
-    <main>
-        <section id="file002" class="section">
-            <h3>Eras</h3>
-            <p>Here, write your texte et blablabla..</p>
-        </section>
+    <section id="file002" class="section">
+        
+            <p style="font-size: 18px; font-weight: bold; text-align: center;">
+                Discovering the Evolution of Movie Endings Through Time
+            </p>
+            <p style="line-height: 1.6;">
+                <b>Have you ever wondered how movie endings have transformed over the decades?</b> 
+                By analyzing movies across different eras, we can uncover fascinating patterns in how filmmakers 
+                have chosen to conclude their stories—whether with joy and resolution or tragedy and ambiguity.
+            </p>
+            <p style="line-height: 1.6;">
+                The relationship between <b>happy endings</b> and <b>time</b> offers a lens through which we can examine cultural evolution. 
+                Do certain decades stand out as particularly <span style="color: #a5673f; font-weight: bold;">optimistic</span>—or 
+                <span style="color: #7f4c33; font-weight: bold;">pessimistic</span>—in their cinematic storytelling?
+            </p>
+            <p style="line-height: 1.6;">
+                In this exploration, we will delve into trends that reveal how the tone of movie conclusions has changed over time. 
+                To begin, we’ll analyze the overall trend in <b>happy ending scores</b> across different periods, identifying broad patterns 
+                and potential anomalies that may hold deeper meaning.
+            </p>
+        
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">Overall Trend Across Time: First Observations</h4>
+            <p style="line-height: 1.6;">
+                The first graph provides an overview of how happy ending scores—measured by their mean and median values—have evolved over the years. 
+                Movies are grouped into adjustable <b>year bins</b>, allowing for a dynamic exploration of these trends: you can interact with the bin size slider  
+                to uncover both detailed and broad trends!
+            </p>
+            <p style="line-height: 1.6;">
+                This visualization goes beyond the scores themselves by including the <b>number of movies produced per bin</b>. 
+                This additional layer offers insight into the ebb and flow of film production across time, helping us contextualize 
+                the patterns observed in happy endings. <b>Note:</b> bins with fewer than 100 movies are excluded from the analysis 
+                to ensure statistical reliability.
+            </p>
+        
+            <div id="graph-container" style="text-align: center; margin-top: 30px;">
+                <iframe src="..\scripts\interactive_bin_plot.html" width="100%" height="700" frameborder="0" style="border: 3px solid #a5673f; border-radius: 10px;"></iframe>
+            </div>
+        
+        <div style="font-family: Arial, sans-serif; color: #4d2e24; margin: 20px; padding: 20px; background-color: #fdf5e6; border: 2px solid #a5673f; border-radius: 10px;">
+            <h4 style="color: #a5673f; text-decoration: underline;">Intriguing Trends in Movie Endings Over Time</h4>
+            <p style="line-height: 1.6;">
+                From this first plot, several <b>intriguing trends</b> emerge. 
+                The distribution of movies across bins is far from uniform, with a <b>surge in films released between 1980 and 2009</b>, peaking around 2006-2007. 
+                As for the <span style="color: #a5673f; font-weight: bold;">happy ending scores</span>, the variation is modest, consistently leaning toward slightly positive values. 
+                Interestingly, when using a higher bin size, a general <b>U-shaped trend</b> becomes apparent: scores start relatively high in the early 20th century, 
+                progressively decline through the mid-century, bottoming out around the 1970s, before climbing back up to brighter days by 2013. 
+            </p>
+            <p style="line-height: 1.6;">
+                <b>Smaller bin sizes</b> reveal intricate patterns of ups and downs, highlighting local variations that are smoothed out with larger bins. 
+                Yet, through it all, one consistent pattern shines through: <span style="color: #7f4c33; font-weight: bold;">happy endings remain the reigning champions of cinema.</span> 
+                There is no period where the majority of movies lean toward sad or tragic conclusions. 
+                Even in the darkest times, it seems audiences—and filmmakers—prefer a <b>silver lining</b>.
+            </p>
+        </div>
+    </div>
+        
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 30px;">Delving Deeper: The Turning Point Analysis</h4>
+            <p style="line-height: 1.6;">
+                Now that we've explored the overall trend in happy ending scores over time, it's time to <b>dig deeper</b> and statistically investigate this 
+                macro-level temporal effect. Specifically, we aim to determine whether significant changes in scores occur <b>before and after a key moment in history</b>—a so-called <b>“Turning Point.”</b> 
+                Do happy endings become more prevalent, or do they take a nosedive into gloominess after a specific year? 
+                Such changes might reflect broader <span style="color: #a5673f; font-weight: bold;">historical, cultural, or societal transformations</span>. 
+                Think of it as our attempt to find the cinematic equivalent of <b>“pre-war optimism”</b> or <b>“post-disco realism.”</b>
+            </p>
+            <p style="line-height: 1.6;">
+                To test this, we’ll use the <b>Mann-Whitney U test</b> (no, it’s not the name of a secret agent, though it sounds like one). 
+                This <span style="color: #a5673f; font-weight: bold;">non-parametric statistical test</span> allows us to compare the distributions of two groups—in our case, happy ending scores before and after a selected Turning Point.
+            </p>
+            <p style="line-height: 1.6;">
+                You’re not stuck with just one Turning Point, though! By <b>varying the threshold year</b>, we can get a broader or more fine-grained understanding of 
+                when significant differences in scores emerge and pinpoint the cinematic milestones where <b>happy endings took a turn</b>. 
+                <span style="color: #a5673f; font-weight: bold;">Let’s have a look at the results!</span>
+            </p>
+        </div>
+        <div style="font-family: Arial, sans-serif; color: #4d2e24; margin: 20px; padding: 20px; background-color: #f3f1ed; border: 2px solid #a5673f; border-radius: 10px;">
+
+        <script>
+            // JavaScript function to toggle between two plots
+            function togglePlots() {
+                const plotFrame = document.getElementById('plot-frame');
+                const currentSrc = plotFrame.src;
+        
+                // Toggle between the two plot sources
+                if (currentSrc.includes("pvalues_without_samples.html")) {
+                    plotFrame.src = "../scripts/pvalues_with_samples.html"; // Path to the alternate plot
+                } else {
+                    plotFrame.src = "../scripts/pvalues_without_samples.html"; // Path to the original plot
+                }
+            }
+        </script>
+        
+        <style>
+            /* Cartoon-style magnifier button */
+            .cartoon-magnifier {
+                cursor: pointer;
+                background-color: #e6ae09; /* Bright yellow for a cartoon feel */
+                border: 3px solid #333; /* Bold border for a cartoon outline effect */
+                border-radius: 50%; /* Circular shape */
+                width: 80px;
+                height: 80px;
+                font-size: 24px; /* Larger icon size */
+                color: #333; /* Dark icon for contrast */
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(255, 255, 255, 0.5); /* Shadow for a playful 3D effect */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+        
+            /* Hover effect for cartoon magnifier */
+            .cartoon-magnifier:hover {
+                transform: scale(1.1); /* Slightly larger on hover */
+                box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4), -8px -8px 12px rgba(255, 255, 255, 0.6);
+                background-color: #A52A2A; /* Enhanced shadow effect */
+            }
+        
+            /* Inner icon style for magnifier */
+            .cartoon-magnifier i {
+                transform: rotate(15deg); /* Slight rotation for a playful look */
+            }
+        </style>
+
+         <!-- Container for the plots -->
+         <div id="dynamic-plot-container">
+            <iframe id="plot-frame" src="..\scripts\pvalues_without_samples.html" width="50%" height="700" frameborder="0"></iframe>
+        </div>
+    </div>
+
+        <h4 style="color: #a5673f; text-decoration: underline;">Detective Work: Addressing Statistical Challenges</h4>
+        <p style="line-height: 1.6;">
+            <b>But wait, Sherlock, there’s a catch!</b> Before we pop the champagne for our statistical findings, let’s click on the magnifier glass 
+            to dig deeper into what groups we just compared in our tests.
+        </p>
+    
+        <div id="plot-toggle-container" style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+            <button id="plot-toggle-button" onclick="togglePlots()" class="cartoon-magnifier">
+                <i class="fas fa-search"></i> <!-- Magnifier glass icon -->
+            </button>
+        </div>
+    
+        <p style="line-height: 1.6;">
+            <b>Did you notice the group sizes?</b> We might have a couple of issues here that could raise some red flags. Let’s investigate!
+        </p>
+        <p style="line-height: 1.6;">
+            First of all, we’re comparing groups of movies that are vastly different in size. This imbalance is particularly glaring when comparing groups 
+            formed at the extremes—before the first decades of the 20th century or after the last ones. From the hint, it becomes clear that these groups 
+            are <b style="color: #a5673f;">highly imbalanced</b>. 
+        </p>
+        <p style="line-height: 1.6;">
+            <b>Why does this matter, you ask?</b> Well, when one group has significantly more data points than the other, the larger group dominates the statistical test, 
+            potentially skewing the results.
+        </p>
+        <p style="line-height: 1.6;">
+            The second issue arises when we compare p-values from multiple statistical tests, each using a different <b>“Turning Point.”</b> Even if we attempt to balance 
+            the groups by downsampling the larger one, we still end up with groups of varying sizes across tests. This inconsistency makes it tricky to draw reliable 
+            comparisons between p-values. The tests might reflect not just differences in the data, but also <b style="color: #7f4c33;">differences in group size</b>.
+        </p>
+    
+        <h4 style="color: #a5673f; margin-top: 30px;">A Robust Solution</h4>
+        <p style="line-height: 1.6;">
+            To address these challenges, we’ll employ a more robust strategy. For each Turning Point, we’ll compare groups of <b>similar sizes</b>, both pre- and post-Turning Point. 
+            To achieve this, we’ll set a minimum sample size and downsample the larger group to match the smaller one.
+        </p>
+        <p style="line-height: 1.6;">
+            <b>But wait, there’s more!</b> For very large groups, we’ll apply <b style="color: #a5673f;">bootstrap sampling</b> to maintain statistical power. 
+            Bootstrap sampling allows us to repeatedly sample subsets from the larger group, ensuring our comparisons remain fair while leveraging as much data as possible.
+        </p>
+        <p style="line-height: 1.6;">
+            Finally, after we’ve examined the results using a different number of thresholds, one pattern stands out: <b style="color: #a5673f;">the period from 1970 to 2008</b> consistently 
+            shows significant differences. To avoid repeating tests for every single year and to focus on broader trends, we’ll limit our analysis to Turning Points spaced 
+            by decades, from 1930 to 2010.
+        </p>
+    
+        <p style="line-height: 1.6; text-align: center; font-size: 18px; font-weight: bold; margin-top: 20px; color: #7f4c33;">
+            Let’s move forward with these adjustments! After all, even the best detective needs the right tools!
+        </p>
+    </div>
+    
+        </p>
+
+         <!-- Container for the plots -->
+         <div style="font-family: Arial, sans-serif; color: #4d2e24; margin: 20px; padding: 20px; background-color: #fdf5e6; border: 2px solid #a5673f; border-radius: 10px;">
+            <iframe id="plot-frame" src="..\scripts\bootstrap_rbc.html" width="50%" height="700" frameborder="0"></iframe>
+        </div>
+
+            <h4 style="color: #a5673f; text-decoration: underline;">Robust Evidence and Remaining Intrigues</h4>
+            <p style="line-height: 1.6;">
+                The results seem to align closely with what we observed previously, but <b style="color: #7f4c33;">some dates are no longer statistically significant!</b> 
+                It looks like we’ve identified some intruders in our earlier findings. The remaining dates, however, provide much more robust evidence. 
+                This gives us stronger proof that a <b>significant shift in movie endings</b> began around the 1980s and has persisted ever since.
+            </p>
+            <p style="line-height: 1.6;">
+                Interestingly, the lack of significance in the most recent decade might be due to <b>sample size issues</b>, as we discussed earlier. 
+                Nevertheless, we can reasonably conclude that the major shift in the distribution of happy ending scores started in the 1980s and has continued steadily into more recent years.
+            </p>
+        
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 20px;">Digging Deeper: Effect Sizes and Group Means</h4>
+            <p style="line-height: 1.6;">
+                But in what direction did this change occur? To dig deeper, we calculated the <b>Rank Biserial Correlation (RBC)</b>, 
+                a metric that measures the effect size of the observed change in the distribution. For the significant p-values, the RBC effect sizes hover around <b>0.07</b>—not a groundbreaking shift, 
+                but enough to suggest a subtle pattern. Additionally, the confidence intervals are quite wide, hinting at some variability in the results. 
+                Despite these limitations, the effects remain <b style="color: #7f4c33;">statistically significant</b> and provide a reliable starting point for further investigation.
+            </p>
+            <p style="line-height: 1.6;">
+                We didn’t stop there! Instead of focusing solely on distribution differences, we also explored changes in <b>group means</b> before and after our Turning Points. 
+                Using <b>Welch’s tests</b> and calculating <b>Cohen’s d</b>—a well-known effect size metric for comparing group means—we discovered a similar trend. 
+                For instance, <b>mean happy ending scores increased</b> from <b style="color: #a5673f;">0.049 before 1990</b> to <b style="color: #a5673f;">0.068 after 1990</b>. 
+                While these numbers might not scream “happily ever after,” they still reveal a consistent, gradual shift.
+            </p>
+        
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 20px;">What Does This Mean?</h4>
+           
+            <p style="line-height: 1.6;">
+                These metrics suggest that <b>happy ending scores</b> have seen a modest but steady increase since the 1980s.
+                But <b>why might this shift have happened?</b> Of course, correlation doesn’t imply causation, but that doesn’t stop us from some educated speculation! 
+                Could this trend be linked to <b>global events, cultural movements, or economic changes?</b> The 1980s, for example, marked the easing of Cold War tensions, 
+                a wave of technological optimism, and the rise of blockbuster cinema. Perhaps these factors inspired stories designed to leave audiences feeling good. 
+            </p>
+            <p style="line-height: 1.6;">
+                Additionally, <b>economic growth and globalization</b> may have played a role in uplifting narratives—happy endings tend to resonate better with larger, diverse audiences. 
+                Or maybe Hollywood simply figured out that optimistic conclusions sell more tickets. These are questions that will be explored later, as we continue to analyze the factors 
+                shaping the ending of a movie. Whatever the reason, movies (ever so slightly) leaned toward brighter endings, 
+                giving audiences a reason to leave the theater smiling.
+            </p>
+        
+            <h4 style="color: #a5673f; text-decoration: underline; margin-top: 20px;">A Case Still Open</h4>
+            <p style="line-height: 1.6;">
+                Despite these intriguing patterns, it’s challenging to pin this change on any single event or trend. Our analysis is based on binary comparisons 
+                (pre- and post-Turning Points), making it difficult to isolate specific causes. More analyses have been performed to try to crack the secret of 
+                the <b>evolution across time of happy ending movies</b>, but they’ve all hit dead ends, leaving us with nothing more than cinematic breadcrumbs. 
+                For those curious detectives, the details of these additional analyses can be quietly found in a result notebook. 
+                For now, the exact reason behind this shift remains a mystery.
+            </p>
+            <p style="line-height: 1.6; font-weight: bold; color: #7f4c33; text-align: center; margin-top: 20px;">
+                One thing’s for sure: Sherlock, we’re going to need more clues to crack this case. Stay tuned!
+            </p>
+        </div>
+
+    </section>
     </main>
 
     <nav>
