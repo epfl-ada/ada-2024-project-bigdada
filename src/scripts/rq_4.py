@@ -28,8 +28,8 @@ def get_analysis(MOVIE_DATASET):
     return movies_filtered
 
 # plot score vs revenue
-def get_score_vs_revenue(movies_filtered, plt=True):
-    if plt:
+def get_score_vs_revenue(movies_filtered, use_plt=True):
+    if use_plt:
         plt.scatter(movies_filtered['Score'], movies_filtered['revenue'])
         plt.xlabel('Score')
         plt.ylabel('Revenue')
@@ -50,8 +50,8 @@ def get_score_vs_revenue(movies_filtered, plt=True):
 
 
 # plot score vs vote average
-def get_score_vs_vote_average(movies_filtered, plt=True):
-    if plt:
+def get_score_vs_vote_average(movies_filtered, use_plt=True):
+    if use_plt:
         plt.scatter(movies_filtered['Score'], movies_filtered['vote_average'])
         plt.xlabel('Score')
         plt.ylabel('Vote Average')
