@@ -77,7 +77,7 @@
                 to ensure statistical reliability.
             </p>
         
-            <div id="graph-container" style="text-align: center; margin-top: 30px;">
+            <div id="graph-container" style="text-align: center; margin: 20px;">
                 <iframe src="..\assets\img\interactive_bin_plot.html" width="100%" height="700" frameborder="0" style="border: 3px solid #a5673f; border-radius: 10px;"></iframe>
             </div>
         
@@ -127,9 +127,9 @@
         
                 // Toggle between the two plot sources
                 if (currentSrc.includes("pvalues_without_samples.html")) {
-                    plotFrame.src = "..\assets\img\pvalues_with_samples.html"; // Path to the alternate plot
+                    plotFrame.src = "/assets/img/pvalues_with_samples.html"; // Path to the alternate plot
                 } else {
-                    plotFrame.src = "..\assets\img\pvalues_without_samples.html"; // Path to the original plot
+                    plotFrame.src = "/assets/img/pvalues_without_samples.html"; // Path to the original plot
                 }
             }
         </script>
@@ -167,7 +167,7 @@
 
          <!-- Container for the plots -->
          <div id="dynamic-plot-container">
-            <iframe id="plot-frame" src="..\assets\img\pvalues_without_samples.html" width="50%" height="700" frameborder="0"></iframe>
+            <iframe id="plot-frame" src="..\assets\img\pvalues_without_samples.html" width="100%" height="700" frameborder="0"></iframe>
         </div>
     </div>
 
@@ -225,7 +225,7 @@
 
          <!-- Container for the plots -->
          <div style="font-family: Arial, sans-serif; color: #4d2e24; margin: 20px; padding: 20px; background-color: #fdf5e6; border: 2px solid #a5673f; border-radius: 10px;">
-            <iframe id="plot-frame" src="..\assets\img\bootstrap_rbc.html" width="50%" height="700" frameborder="0"></iframe>
+            <iframe id="plot-frame" src="..\assets\img\bootstrap_rbc.html" width="100%" height="700" frameborder="0"></iframe>
         </div>
 
             <h4 style="color: #a5673f; text-decoration: underline;">Robust Evidence and Remaining Intrigues</h4>
