@@ -25,6 +25,7 @@
              <li><a href="file004.html">File 004 – The Motive: Cultural Differences</a></li>
              <li><a href="file005.html">File 005 – Productions</a></li>
              <li><a href="file006.html">File 006 – Genres and Their Suspect Conventions</a></li>
+             <li><a href="file007.html">File 007 – Length of the Movie</a></li>
              <li><a href="conclusion.html">The Epilogue</a></li>
          </ul>
      </div>
@@ -40,61 +41,94 @@
         <img src="../assets/img/header_1.png" alt="Header Banner" class="header-img">
         <div class="header-overlay">
             <h1>File 005 – The Productions</h1>
-            <p>Here, we explore the relationship between the prodcutions and happy endings</p>
+            <p>Here, we explore the relationship between the productions and happy endings</p>
         </div>
     </header>
 
     <main>
         <section id="file005" class="section">
-            <h3>Productions</h3>
-            <p>
-                Dans cette enquête, les maisons de production se sont révélées être des acteurs clés dans l'orientation des fins des films. 
-                À l'image de suspects bien établis, certaines productions affichent des tendances marquées. 
-                Notre enquête nous a menés dans les coulisses des productions. Et là, sous les projecteurs tamisés, 
-                les corrélations sont apparues comme des empreintes digitales sur une scène de crime...
-            </p>
+            <h1>Detective Storytelling: Investigating the Influence of Production on Movie Endings</h1>
         
-            <iframe src="../assets/img/plot_interactive_5_.html" 
-                style="width:100%; max-width:1000px; height:400px; border:none; display:block; margin: 20px auto; overflow:hidden;">
+            <h2>The Scene Setup</h2>
+            <p> Let's dive here into a new investigation where we delve into the heart of movie production. We will examine the intricate connection between production names and the type of endings in movies. So, grab your magnifying glass as we uncover the clues hidden within the data.</p>
+        
+            
+            <p>As our story begins, we are presented with a dataset of movies, complete with details about their budgets, scores, and production companies.
+                 Our first challenge is to clean the data: removing movies with missing or zero budget. 
+                 Think of it like sifting through a pile of evidence—filtering out the noise to focus on the more promising leads.</p>
+        
+            <p>Once the data is cleaned and ready, we set our sights on one specific question: <strong>Do production scale affect the type of ending chosen?</strong></p>
+        
+            <h2>The Investigation</h2>
+            <p>We start by diving into the dataset with a close look at the <code>score</code> variables. The first key step is to test whether there’s a correlation between a movie’s production and its score (which, in our case, could give us an indication of whether a happy ending is more prevalent among productions).</p>
+        
+            <p>But of course, data alone is not enough. We need to apply the scientific method. So, we move on to the statistical testing phase:</p>
+            <ul>
+                <li><strong>Shapiro-Wilk Test:</strong> This test determines if our groups follow a normal distribution—essential for applying parametric tests.</li>
+                <li><strong>Levene’s Test:</strong> To check if the variances between groups are consistent, which is crucial for our next step.</li>
+                <li><strong>ANOVA or Kruskal-Wallis Test:</strong> If both normality and variance homogeneity hold, we proceed with an ANOVA. Otherwise, we use the non-parametric Kruskal-Wallis test to ensure robustness.</li>
+            </ul>
+
+            <iframe src="../assets/img/productions_plots_new.html" 
+                    style="width:100%; max-width:1000px; height:600px; border:none; display:block; margin: 20px auto; overflow:hidden;">
             </iframe>
         
-            <p>
-                Un élément clé de notre enquête réside dans le graphique interactif présenté ci-dessus. Celui-ci met en lumière les 10 productions 
-                ayant obtenu les <strong>meilleurs scores</strong> en moyenne (celles qui favorisent le plus souvent des fins heureuses), ainsi que les 
-                10 productions avec les <strong>scores les plus faibles</strong>, tendant à éviter les dénouements joyeux. 
-                Ces résultats offrent une perspective fascinante : les choix narratifs d'une poignée de studios semblent être des forces majeures façonnant 
-                l'expérience cinématographique.
-            </p>
+            <p>We carry out these tests with precision, verifying that our comparisons between different production companies hold up under scrutiny. We focus on productions with a sufficient sample size—at least 50 films per group. The results of our statistical tests determine whether there is a significant difference in how different productions approach movie endings.</p>
+            <p>Our investigation begins with a crucial discovery: we found a significant difference between the groups. This first clue leads us deeper into the mystery, prompting us to dig further. To uncover the details behind this difference, we turn to Dunn’s Test. This test allows us to pinpoint exactly where the significant differences lie between the groups. 
+                The p-values from these tests serve as the final pieces of the puzzle, guiding us toward the answer.</p>
+
+            <h2>The Turning Point</h2>
+            <p>As the investigation deepens, we find ourselves looking at the results of Dunn’s Test, which allows us to highlight the most significant comparisons between production companies. These comparisons reveal whether certain studios consistently lean toward specific types of endings, and the p-values serve as the final clue to this mystery.</p>
         
-            <p>
-                Mais notre enquête ne s'est pas arrêtée là. Pour aller plus loin, nous avons appliqué une analyse ANOVA afin de tester 
-                si les différences observées entre les productions étaient statistiquement significatives. Les résultats ont confirmé nos soupçons :
-                même en imposant un seuil strict d’un minimum de 100 films par production, les différences restent <strong>significatives</strong>. 
-                C’est comme si chaque maison de production possédait une empreinte unique, influençant directement le type de dénouement.
-            </p>
-        
-            <p>
-                Ces observations nous rappellent que, derrière chaque <em>"The End"</em>, il y a des choix, des chiffres et des visions du monde. 
-                Le cinéma n’est pas qu’un art : c’est un <strong>jeu d’équilibre</strong> entre ce que le public espère et ce que les créateurs veulent montrer.
-            </p>
+            <div class="image-container">
+                <img src="../assets/img/graph.png" alt="Graphique des résultats de Dunn" width="700px" height="400px">
+            </div>
+            
+            <p>In a dramatic twist, our findings reveal which production companies are most likely to influence the outcome of a film, based and production scale. We can now reveal which studios might be more inclined to deliver the ever-popular happy endings—and the reasons behind this trend.</p>
+            <p>We can see that the Hammer Production has significant differences with Hollywood, the Walt Disney Pictures, the Fox 2000 Pictures, the Amblin Entertainment, and the Hollywood Pictures. As detectives piecing together the mystery of movie endings, the bar plot above became a crucial piece of evidence. It revealed that Hammer Production stands out as one of the studios with the lowest scores, a clear sign that they have a marked inclination toward crafting movies with unhappy endings. In contrast, the other production companies—Hollywood, Walt Disney Pictures, and the rest—shine as consistent producers of films with overwhelmingly happy conclusions. This pivotal clue brings us one step closer to unraveling the enigma of how studios shape the emotional journeys of their audiences.</p>
+
+            <p>With this revelation in hand, we dive deeper into the four highlighted productions. Their contrasting approaches to storytelling deserve a closer examination, as they may hold the key to understanding the broader patterns in movie endings. Let’s step into their world and uncover the evidence hidden within their films:</p>
 
             <div class="book-page" id="page1">
-                <p>Par exemple, le studio Beta, connu pour ses productions sentimentales, présente une moyenne impressionnante de 90 % de happy endings, tandis que le studio Zeta se distingue par des dénouements dramatiques, avec seulement 15 % d’histoires finissant bien.</p>
+                <div class="content">
+                    <img src="../assets/img/fox2000png.png" alt="Fox 2000 Pictures Logo" class="production-image">
+                    <p>Fox 2000 Pictures, renowned for its diverse portfolio, achieves an impressive 72.55% rate of happy endings. This balance reflects their knack for weaving both uplifting and bittersweet narratives, striking a chord with audiences who enjoy a mix of emotions.</p>
+                </div>
             </div>
             <div class="book-page" id="page2">
-                <p>Le studio Alpha, ayant un large catalogue de films populaires, présente 87 % de happy endings sur un total de 150 films, alors que le studio Omega n’en affiche que 12 % sur 120 films.</p>
+                <div class="content">
+                    <img src="../assets/img/amblin.jpg" alt="Amblin Entertainment Logo" class="production-image">
+                    <p>Amblin Entertainment surpasses expectations with 77.78% of their films concluding on a joyful note. Known for creating heartwarming stories, their productions continue to inspire generations, leaving viewers with a sense of nostalgia and optimism.</p>
+                </div>
             </div>
-            <!-- Ajouter d'autres pages de production ici -->
-
-
+            <div class="book-page" id="page3">
+                <div class="content">
+                    <img src="../assets/img/disney.png" alt="Walt Disney Pictures Logo" class="production-image">
+                    <p>Walt Disney Pictures—often synonymous with magical endings—delivers 70.77% of happy conclusions. Their family-friendly joy and enchanting narratives remain a cornerstone of their global legacy, captivating audiences of all ages.</p>
+                </div>
+            </div>
+            <div class="book-page" id="page4">
+                <div class="content">
+                    <img src="../assets/img/hammer.png" alt="Hammer Film Productions Logo" class="production-image">
+                    <p>Hammer Film Productions takes a dramatically different route, with only 42.62% of its films ending happily. This divergence hints at their preference for exploring darker, more complex storylines, cementing their reputation as pioneers in gothic and horror cinema.</p>
+                </div>
+            </div>
 
             <!-- Controls for navigation -->
             <div class="book-navigation">
                 <button class="prev" onclick="changePage(-1)">&#10094; Prev</button>
                 <button class="next" onclick="changePage(1)">Next &#10095;</button>
             </div>
+            
 
-       
+
+            <h2>The Final Chapter</h2>
+            <p>With the data analyzed and the tests completed, we can confidently say that the production company plays a significant role in determining the type of ending a movie will have. Some production houses are more likely to opt for endings that appeal to mass audiences, especially happy endings. However, as in any good detective story, the plot is never completely simple, and the nuances of individual films still carry their weight in the narrative.</p>
+        
+            <p>So, there you have it—a thrilling investigation into the world of movie production and its influence on storytelling choices. Stay tuned for more clues as we continue to uncover hidden patterns in the world of cinema!</p>
+
+            
+
         </section> 
         
         
@@ -104,7 +138,7 @@
     <nav>
         <ul>
             <li><a href="file004.html">Previous : Cultural differences</a></li> <!-- Lien vers la page d'accueil -->
-            <li><a href="conclusion.html">Next: Conclusion</a></li> <!-- Lien vers la page suivante -->
+            <li><a href="file006.html">Next: Genres</a></li> <!-- Lien vers la page suivante -->
         </ul>
     </nav>
 

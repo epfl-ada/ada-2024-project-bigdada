@@ -12,7 +12,7 @@
 
 # ##### Importations
 
-# In[1]:
+# In[15]:
 
 
 import pandas as pd
@@ -29,6 +29,9 @@ import ast
 from scipy.stats import shapiro, levene, f_oneway, kruskal
 import networkx as nx
 import scikit_posthocs as sp
+import plotly.io as pio
+import os
+
 
 
 copper_colormap = cm.get_cmap('copper', 256)  # 256 niveaux
@@ -38,7 +41,7 @@ copper_colorscale = [
 ]
 
 
-# In[2]:
+# In[16]:
 
 
 # path
@@ -51,7 +54,7 @@ movies = pd.read_csv(MOVIE_DATASET, sep='\t')
 
 # Remove movies with missing values for budget
 
-# In[3]:
+# In[17]:
 
 
 # Count rows where 'budget' is NaN or 0
@@ -73,7 +76,7 @@ remaining_rows = len(movies)
 
 # ### Statistics
 
-# In[4]:
+# In[18]:
 
 
 # Calculate the correlation between budget and score
@@ -81,7 +84,7 @@ correlation = movies['Budget'].corr(movies['Score'])
 print(f"Correlation between budget and score: {correlation:.2f}")
 
 
-# In[ ]:
+# In[19]:
 
 
 # Create a scatter plot to visualize the relationship between the budget and the presence of a happy ending
@@ -109,7 +112,7 @@ fig.show()
 # Statistical tests are essential for determining whether the observed differences in production scores are significant. Our methodology follows a rigorous three-step process. First, the **Shapiro-Wilk test for normality** ensures that each group’s scores follow a normal distribution, a key assumption for parametric tests like ANOVA. Next, the **Levene’s test for homogeneity of variances** checks whether the variances between groups are equivalent, another prerequisite for ANOVA. If these assumptions are not met, a non-parametric test, such as the **Kruskal-Wallis test**, is employed as a robust alternative. This approach ensures reliable results by adapting to the specific characteristics of the data.
 # 
 
-# In[6]:
+# In[20]:
 
 
 # Load the dataset
@@ -228,7 +231,7 @@ def plot_significant_comparisons(graph_data):
 
 
 
-# In[7]:
+# In[21]:
 
 
 # Loading the dataset
@@ -327,7 +330,7 @@ for row in significant_comparisons_clean.index:
 plot_significant_comparisons(significant_comparisons_clean)
 
 
-# In[ ]:
+# In[22]:
 
 
 def plot_average_scores_plotly(production_scores):
@@ -361,232 +364,94 @@ def plot_boxplot_scores_plotly(valid_groups):
 plot_boxplot_scores_plotly(valid_groups_filtered)
 
 
-# In[9]:
+# In[51]:
 
 
-def interactive_bar_plot():
-
-    # Step 1: Create the Dash app
-    app = Dash(__name__, title='bar plot')
-
-    # Step 2: Define the app layout
-    app.layout = html.Div([
-        # Main container
-        html.Div([
-            # Main graph
-            dcc.Graph(
-                id='score-visualization',
-                config={'displayModeBar': False},  # Disable the toolbar
-                style={'flex': '1'}
-            ),
-            # Dropdown menu positioned at the top right
-            html.Div([
-                html.Label("Minimum threshold for productions:", style={'fontWeight': 'bold'}),
-                dcc.Dropdown(
-                    id='min_films_threshold',
-                    options=[
-                        {'label': str(value), 'value': value} for value in [1, 5, 10, 30, 50, 100]
-                    ],
-                    value=5,  # Default value
-                    clearable=False,
-                    style={'width': '150px',
-                           'textAlign': 'center',
-                           'paddingRight': '10px'}
-                    
-                )
-            ], style={
-                'position': 'absolute',
-                'top': '10px',
-                'right': '10px',
-                'textAlign': 'right'
-            }),
-        ], style={'position': 'relative'}),
-
-        # Slider at the bottom
-        html.Label("Number of films to display:", style={'fontWeight': 'bold', 'marginTop': '20px'}),
-        dcc.Slider(
-            id='num_films',
-            min=1,
-            max=10,
-            step=1,
-            value=5,
-            marks={i: str(i) for i in range(1, 11)}
-        ),
-    ], style={'display': 'flex', 'flexDirection': 'column', 'height': '100vh', 'padding': '20px'})
-
-
-    # Step 3: Define the callback to update the graph
-    @app.callback(
-        Output('score-visualization', 'figure'),
-        Input('num_films', 'value'),
-        Input('min_films_threshold', 'value')
-    )
+# Function to generate the plots for each combination of thresholds
+def generate_all_plots():
+    thresholds_min_num = [3, 5, 10]  # List of minimum number of films to consider
+    thresholds_min_films = [1, 50, 100]  # List of minimum films count to consider
     
-    def create_plot(num_films, min_films_threshold):
-
-        
-        valid_groups_filtered = filter_productions_by_size(valid_groups, min_films_threshold)
-        if valid_groups_filtered.empty:
-            return go.Figure().update_layout(title="No data available for these parameters.")
-        production_scores_filtered = valid_groups_filtered.groupby('production_names')['Score'].mean().reset_index()
-        production_scores_filtered.rename(columns={'Score': 'avg_Score'}, inplace=True)
-
-
-        # Sort by average score
-        production_scores_sorted = production_scores_filtered.sort_values(by='avg_Score', ascending=False)
-
-        # Select the N productions with the highest and lowest scores
-        top_n_productions = production_scores_sorted.head(num_films)
-        bottom_n_productions = production_scores_sorted.tail(num_films)
-
-        # Combine the two DataFrames
-        combined_productions = pd.concat([top_n_productions, bottom_n_productions])
-
-        # Create a bar plot with Plotly
-        fig = go.Figure()
-
-        bar_trace= go.Bar(
-            x=combined_productions['production_names'],
-            y=combined_productions['avg_Score'],
-            marker=dict(color=combined_productions['avg_Score'], colorscale=copper_colorscale),
-            hoverinfo='x+y',
-            name='Productions',
-        )
-
-        layout = go.Layout(
-            title=f'Top {num_films} and Bottom {num_films} Productions per Mean Score',
-            xaxis_title='Name of the Production',
-            yaxis_title='Mean Score',
-            barmode='overlay',
-            template='plotly_white'
-        )
-
-
-        # Combine traces into a figure
-        fig = go.Figure(data=[bar_trace], layout=layout)
-
-        # Save the figure as an interactive HTML file
-        fig.write_html("graph.html")
-        return fig
-
-    # Step 4: Run the app
-    app.server.run(port=8005, host='127.0.0.1')
-
-
-# In[10]:
-
-
-interactive_bar_plot()
-
-
-# Step 1: Create the Dash app
-app = Dash(__name__, title='bar plot')
-
-# Step 2: Define the app layout
-app.layout = html.Div([
-    # Main container
-    html.Div([
-        # Main graph
-        dcc.Graph(
-            id='score-visualization',
-            config={'displayModeBar': False},  # Disable the toolbar
-            style={'flex': '1'}
-        ),
-        # Dropdown menu positioned at the top right
-        html.Div([
-            html.Label("Minimum threshold for productions:", style={'fontWeight': 'bold'}),
-            dcc.Dropdown(
-                id='min_films_threshold',
-                options=[
-                    {'label': str(value), 'value': value} for value in [1, 5, 10, 30, 50, 100]
-                ],
-                value=5,  # Default value
-                clearable=False,
-                style={'width': '150px',
-                        'textAlign': 'center',
-                        'paddingRight': '10px'}
-                
+    all_traces = []  # List to store all the plot traces
+    buttons = []  # List to store buttons for visibility control
+    
+    # Loop through each combination of thresholds
+    for num_films in thresholds_min_num:
+        for min_films in thresholds_min_films:
+            # Filter the productions based on the thresholds
+            filtered_data = filter_productions_by_size(valid_groups, min_films)
+            if filtered_data.empty:
+                continue  # Skip if no data after filtering
+            
+            # Calculate the average scores for each production
+            production_scores_filtered = filtered_data.groupby('production_names')['Score'].mean().reset_index()
+            production_scores_filtered.rename(columns={'Score': 'avg_Score'}, inplace=True)
+            
+            # Sort the productions by average score in descending order
+            production_scores_sorted = production_scores_filtered.sort_values(by='avg_Score', ascending=False)
+            
+            # Select the top N and bottom N productions (e.g., top 5 and bottom 5)
+            top_n_productions = production_scores_sorted.head(num_films)
+            bottom_n_productions = production_scores_sorted.tail(num_films)
+            
+            # Combine the top and bottom production DataFrames
+            combined_productions = pd.concat([top_n_productions, bottom_n_productions])
+            
+            # Create a bar trace for this plot
+            trace = go.Bar(
+                x=combined_productions['production_names'],  # X-axis: production names
+                y=combined_productions['avg_Score'],  # Y-axis: average score
+                name=f"Min Movies: {min_films} - Num Plot : {num_films}",  # Name for the trace
+                marker=dict(color=combined_productions['avg_Score'], colorscale=copper_colorscale),  # Color scale based on score
+                hoverinfo='x+y'  # Info shown on hover
             )
-        ], style={
-            'position': 'absolute',
-            'top': '10px',
-            'right': '10px',
-            'textAlign': 'right'
-        }),
-    ], style={'position': 'relative'}),
-
-    # Slider at the bottom
-    html.Label("Number of films to display:", style={'fontWeight': 'bold', 'marginTop': '20px'}),
-    dcc.Slider(
-        id='num_films',
-        min=1,
-        max=10,
-        step=1,
-        value=5,
-        marks={i: str(i) for i in range(1, 11)}
-    ),
-], style={'display': 'flex', 'flexDirection': 'column', 'height': '100vh', 'padding': '20px'})
-
-
-# Step 3: Define the callback to update the graph
-@app.callback(
-    Output('score-visualization', 'figure'),
-    Input('num_films', 'value'),
-    Input('min_films_threshold', 'value')
-)
-
-def create_plot(num_films, min_films_threshold):
-
+            all_traces.append(trace)  # Add trace to the list
+            
+            # Add a button for controlling the visibility of this plot
+            visibility = [False] * len(thresholds_min_num) * len(thresholds_min_films)
+            idx = thresholds_min_num.index(num_films) * len(thresholds_min_films) + thresholds_min_films.index(min_films)
+            visibility[idx] = True
+            buttons.append(dict(
+                label=f"Min Movies: {min_films} - Num Plot: {num_films}",  # Button label
+                method="update",  # Method for updating visibility
+                args=[{"visible": visibility}, {"title": f"Productions with a minimum of movies: {min_films} - Top {num_films} Production per score means"}]
+            ))
     
-    valid_groups_filtered = filter_productions_by_size(valid_groups, min_films_threshold)
-    if valid_groups_filtered.empty:
-        return go.Figure().update_layout(title="No data available for these parameters.")
-    production_scores_filtered = valid_groups_filtered.groupby('production_names')['Score'].mean().reset_index()
-    production_scores_filtered.rename(columns={'Score': 'avg_Score'}, inplace=True)
+    return all_traces, buttons  # Return all traces and buttons for visibility control
 
-
-    # Sort by average score
-    production_scores_sorted = production_scores_filtered.sort_values(by='avg_Score', ascending=False)
-
-    # Select the N productions with the highest and lowest scores
-    top_n_productions = production_scores_sorted.head(num_films)
-    bottom_n_productions = production_scores_sorted.tail(num_films)
-
-    # Combine the two DataFrames
-    combined_productions = pd.concat([top_n_productions, bottom_n_productions])
-
-    # Create a bar plot with Plotly
-    fig = go.Figure()
-
-    bar_trace= go.Bar(
-        x=combined_productions['production_names'],
-        y=combined_productions['avg_Score'],
-        marker=dict(color=combined_productions['avg_Score'], colorscale=copper_colorscale),
-        hoverinfo='x+y',
-        name='Productions',
+# Function to save the interactive HTML file
+def save_all_plots_html(output_folder):
+    all_traces, buttons = generate_all_plots()  # Generate the traces and buttons
+    
+    # Create the figure with all the traces
+    fig = go.Figure(data=all_traces)
+    
+    # Update the layout with buttons to control visibility
+    fig.update_layout(
+        title= "Top and Bottom Productions by Score",  # Title of the plot
+        xaxis_title="Name of the Production",  # Label for X-axis
+        yaxis_title="Average Score",  # Label for Y-axis
+        template="plotly_white",  # Set the template for the plot
+        updatemenus=[{
+            "buttons": buttons,  # Add the buttons for visibility control
+            "direction": "down",  # Direction of the button dropdown
+            "x": 1,  # X position of the button
+            "xanchor": "right",  # Anchor the button at the center horizontally
+            "y": 1.10,  # Y position of the button
+            "yanchor": "top",  # Anchor the button at the top vertically
+            "showactive": True  # Show active button state
+        }],
+        #visible=visibility  # Set the visibility control for the plots
     )
-
-    layout = go.Layout(
-        title=f'Top {num_films} and Bottom {num_films} Productions per Mean Score',
-        xaxis_title='Name of the Production',
-        yaxis_title='Mean Score',
-        barmode='overlay',
-        template='plotly_white'
-    )
+    
+    # Save the figure to an HTML file
+    output_file = os.path.join("productions_plots_new.html")  # Specify the output file path
+    pio.write_html(fig, file=output_file, full_html=True, include_plotlyjs="cdn")  # Save the figure as an HTML file
+    print(f"HTML saved to: {output_file}")  # Print the saved file location
 
 
-    # Combine traces into a figure
-    fig = go.Figure(data=[bar_trace], layout=layout)
-
-    # Save the figure as an interactive HTML file
-    fig.write_html("graph.html")
-    return fig
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
-
-
+output_folder = "assets/img/"  
+save_all_plots_html(output_folder)
 
 
 # In[ ]:

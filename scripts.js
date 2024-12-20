@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 let currentPage = 1;
-const totalPages = 2; 
+const totalPages = 4; 
 
 
 function changePage(direction) {

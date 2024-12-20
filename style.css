@@ -349,3 +349,37 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;  /* Centre horizontalement */
+    margin: 20px 0;          /* Ajoute un espace raisonnable au-dessus et en dessous */
+}
+img {
+    max-width: 100%;  /* Empêche l'image de dépasser la largeur du conteneur */
+    height: auto;     /* Maintient les proportions */
+}
+
+
+.content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.production-image {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.book-page {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 800px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
