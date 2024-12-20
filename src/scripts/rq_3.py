@@ -53,92 +53,121 @@ def get_analysis(MOVIE_DATASET):
     return director_avg_score, director_score_variance, director_avg_revenue, director_avg_vote_average
 
 
-def get_director_avg_score(director_avg_score, save_path="../../assets/img/rq3/"):
-    fig = px.histogram(
-        director_avg_score, 
-        nbins=10,
-        title='Average ending score per director',
-        log_y=True
-    )
+def get_director_avg_score(director_avg_score, save_path="../../assets/img/rq3/", use_plt=True):
+    if use_plt:
+        plt.hist(director_avg_score, bins=10, log=True, color='blue', edgecolor='black')
+        plt.title('Average ending score per director')
+        plt.xlabel('Average ending score')
+        plt.ylabel('Number of directors')
+        plt.show()
+    else:
+        fig = px.histogram(
+            director_avg_score, 
+            nbins=10,
+            title='Average ending score per director',
+            log_y=True
+        )
 
-    fig.update_layout(
-        xaxis_title='Average ending score',
-        yaxis_title='Number of directors',
-        bargap=0.1,
-        showlegend=False
-    )
+        fig.update_layout(
+            xaxis_title='Average ending score',
+            yaxis_title='Number of directors',
+            bargap=0.1,
+            showlegend=False
+        )
 
-    fig.show()
-    fig.write_html(os.path.join(save_path, "director_avg_score.html"))
+        fig.show()
+        fig.write_html(os.path.join(save_path, "director_avg_score.html"))
 
+def get_director_score_variance(director_score_variance, save_path="../../assets/img/rq3/", use_plt=True):
+    if use_plt:
+        plt.hist(director_score_variance, bins=10, log=True, color='green', edgecolor='black')
+        plt.title('Ending score variance per director')
+        plt.xlabel('Ending score variance')
+        plt.ylabel('Number of directors')
+        plt.show()
+    else:
+        fig = px.histogram(
+            director_score_variance, 
+            nbins=10,
+            title='Ending score variance per director',
+            log_y=True
+        )
 
-def get_director_score_variance(director_score_variance, save_path="../../assets/img/rq3/"):
-    fig = px.histogram(
-        director_score_variance, 
-        nbins=10,
-        title='Ending score variance per director',
-        log_y=True
-    )
+        fig.update_layout(
+            xaxis_title='Ending score variance',
+            yaxis_title='Number of directors',
+            bargap=0.1,
+            showlegend=False
+        )
 
-    fig.update_layout(
-        xaxis_title='Ending score variance',
-        yaxis_title='Number of directors',
-        bargap=0.1,
-        showlegend=False
-    )
+        fig.show()
+        fig.write_html(os.path.join(save_path, "director_score_variance.html"))
 
-    fig.show()
-    fig.write_html(os.path.join(save_path, "director_score_variance.html"))
+def get_director_avg_score_vs_avg_revenue(director_avg_score, director_score_variance, director_avg_revenue, save_path="../../assets/img/rq3/", use_plt=True):
+    if use_plt:
+        index = director_avg_score.index
+        plt.scatter(director_avg_score, director_score_variance[index], c=np.log10(director_avg_revenue), cmap='viridis')
+        plt.colorbar(label='Log10(Average Revenue)')
+        plt.title('Average ending score vs ending score variance per director')
+        plt.xlabel('Average Ending Score')
+        plt.ylabel('Ending Score Variance')
+        plt.show()
+    else:
+        fig = px.scatter(
+            pd.DataFrame({
+                'Average Ending Score': director_avg_score,
+                'Ending Score Variance': director_score_variance,
+                'Average Revenue': director_avg_revenue
+            }),
+            x='Average Ending Score',
+            y='Ending Score Variance',
+            color=np.log10(director_avg_revenue),
+            hover_name=director_avg_score.index,
+            color_continuous_scale='Viridis',
+            title='Average ending score vs ending score variance per director<br>Color is average revenue'
+        )
 
+        fig.update_layout(
+            xaxis_title='Average Ending Score',
+            yaxis_title='Ending Score Variance',
+            coloraxis_colorbar=dict(title='Average Revenue', tickvals=[6, 7, 8, 9], ticktext=['1M', '10M', '100M', '1B'])
+        )
 
-def get_director_avg_score_vs_avg_revenue(director_avg_score, director_score_variance, director_avg_revenue, save_path="../../assets/img/rq3/"):
-    fig = px.scatter(
-        pd.DataFrame({
-        'Average Ending Score': director_avg_score,
-        'Ending Score Variance': director_score_variance,
-        'Average Revenue': director_avg_revenue
-    }),
-        x='Average Ending Score',
-        y='Ending Score Variance',
-        color=np.log10(director_avg_revenue),
-        hover_name=director_avg_score.index,
-        color_continuous_scale='Viridis',
-        title='Average ending score vs ending score variance per director<br>Color is average revenue'
-    )
+        fig.show()
+        fig.write_html(os.path.join(save_path, "director_avg_score_vs_score_variance.html"))
 
-    fig.update_layout(
-        xaxis_title='Average Ending Score',
-        yaxis_title='Ending Score Variance',
-        coloraxis_colorbar=dict(title='Average Revenue', tickvals=[6, 7, 8, 9], ticktext=['1M', '10M', '100M', '1B'])
-    )
+def get_director_avg_score_vs_avg_vote_average(director_avg_score, director_score_variance, director_avg_vote_average, save_path="../../assets/img/rq3/", use_plt=True):
+    if use_plt:
+        index = director_avg_score.index
+        scatter = plt.scatter(director_avg_score, director_score_variance[index], c=director_avg_vote_average, cmap='viridis')
+        plt.colorbar(scatter, label='Average Vote Average')
+        plt.title('Average ending score vs ending score variance per director')
+        plt.xlabel('Average Ending Score')
+        plt.ylabel('Ending Score Variance')
+        plt.show()
+    else:
+        fig = px.scatter(
+            pd.DataFrame({
+                'Average Ending Score': director_avg_score,
+                'Ending Score Variance': director_score_variance,
+                'Average Vote Average': director_avg_vote_average
+            }),
+            x='Average Ending Score',
+            y='Ending Score Variance',
+            color='Average Vote Average',
+            hover_name=director_avg_score.index,
+            color_continuous_scale='Viridis',
+            title='Average ending score vs ending score variance per director<br>Color is average vote average'
+        )
 
-    fig.show()
-    fig.write_html(os.path.join(save_path, "director_avg_score_vs_score_variance.html"))
+        fig.update_layout(
+            xaxis_title='Average Ending Score',
+            yaxis_title='Ending Score Variance',
+            coloraxis_colorbar=dict(title='Average Vote Average')
+        )
 
-
-def get_director_avg_score_vs_avg_vote_average(director_avg_score, director_score_variance, director_avg_vote_average, save_path="../../assets/img/rq3/"):
-    fig = px.scatter(
-        pd.DataFrame({
-        'Average Ending Score': director_avg_score,
-        'Ending Score Variance': director_score_variance,
-        'Average Vote Average': director_avg_vote_average
-    }),
-        x='Average Ending Score',
-        y='Ending Score Variance',
-        color='Average Vote Average',
-        hover_name=director_avg_score.index,
-        color_continuous_scale='Viridis',
-        title='Average ending score vs ending score variance per director<br>Color is average vote average'
-    )
-
-    fig.update_layout(
-        xaxis_title='Average Ending Score',
-        yaxis_title='Ending Score Variance',
-        coloraxis_colorbar=dict(title='Average Vote Average')
-    )
-
-    fig.show()
-    fig.write_html(os.path.join(save_path, "director_avg_score_vs_score_variance_vote_average.html"))
+        fig.show()
+        fig.write_html(os.path.join(save_path, "director_avg_score_vs_score_variance_vote_average.html"))
 
 # use t test to check if the average score is significantly different between directors with high and low revenue
 def t_test_avg_score_on_revenue(director_avg_score, director_avg_revenue):
