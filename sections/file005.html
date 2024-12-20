@@ -41,7 +41,7 @@
         <img src="../assets/img/header_1.png" alt="Header Banner" class="header-img">
         <div class="header-overlay">
             <h1>File 005 – The Productions</h1>
-            <p>Here, we explore the relationship between the prodcutions and happy endings</p>
+            <p>Here, we explore the relationship between the productions and happy endings</p>
         </div>
     </header>
 
@@ -49,29 +49,30 @@
         <section id="file005" class="section">
             <h1>Detective Storytelling: Investigating the Influence of Production on Movie Endings</h1>
         
-            <p><strong>Introduction:</strong> Welcome to another thrilling chapter in our detective series where we delve into the heart of movie production and storytelling. Our task today is to examine the intricate connection between production names and the type of endings in movies. Specifically, we’re investigating whether well-known production companies with larger budgets have a tendency to favor certain types of endings, such as happy endings, to appeal to a broader audience. So, grab your magnifying glass as we uncover the clues hidden within the data.</p>
+            <p><strong>Introduction:</strong> Welcome to another thrilling chapter in our detective series where we delve into the heart of movie production. We will examine the intricate connection between production names and the type of endings in movies. So, grab your magnifying glass as we uncover the clues hidden within the data.</p>
         
             <h2>The Scene Setup</h2>
             <p>As our story begins, we are presented with a dataset of movies, complete with details about their budgets, scores, and production companies. Our first challenge is to clean the data: removing movies with missing or zero budget. Think of it like sifting through a pile of evidence—filtering out the noise to focus on the more promising leads.</p>
         
-            <p>Once the data is cleaned and ready, we set our sights on one specific question: <strong>Do budget and production scale affect the type of ending chosen?</strong></p>
+            <p>Once the data is cleaned and ready, we set our sights on one specific question: <strong>Do production scale affect the type of ending chosen?</strong></p>
         
             <h2>The Investigation</h2>
-            <p>We start by diving into the dataset with a close look at the <code>budget</code> and <code>score</code> variables. The first key step is to test whether there’s a correlation between a movie’s budget and its score (which, in our case, could give us an indication of whether a happy ending is more prevalent among higher-budget films). A scatter plot is generated to visually examine this relationship, with the color of each data point indicating whether the movie had a happy ending or not.</p>
+            <p>We start by diving into the dataset with a close look at the <code>score</code> variables. The first key step is to test whether there’s a correlation between a movie’s production and its score (which, in our case, could give us an indication of whether a happy ending is more prevalent among productions).</p>
         
             <p>But of course, data alone is not enough. We need to apply the scientific method. So, we move on to the statistical testing phase:</p>
-        
-            <iframe src="../assets/img/productions_plots_new.html" 
-                    style="width:100%; max-width:1000px; height:600px; border:none; display:block; margin: 20px auto; overflow:hidden;">
-            </iframe>
             <ul>
                 <li><strong>Shapiro-Wilk Test:</strong> This test determines if our groups follow a normal distribution—essential for applying parametric tests.</li>
                 <li><strong>Levene’s Test:</strong> To check if the variances between groups are consistent, which is crucial for our next step.</li>
                 <li><strong>ANOVA or Kruskal-Wallis Test:</strong> If both normality and variance homogeneity hold, we proceed with an ANOVA. Otherwise, we use the non-parametric Kruskal-Wallis test to ensure robustness.</li>
             </ul>
+
+            <iframe src="../assets/img/productions_plots_new.html" 
+                    style="width:100%; max-width:1000px; height:600px; border:none; display:block; margin: 20px auto; overflow:hidden;">
+            </iframe>
         
             <p>We carry out these tests with precision, verifying that our comparisons between different production companies hold up under scrutiny. We focus on productions with a sufficient sample size—at least 50 films per group. The results of our statistical tests determine whether there is a significant difference in how different productions approach movie endings.</p>
-            <p>Our investigation begins with a crucial discovery: we found a significant difference between the groups. This first clue leads us deeper into the mystery, prompting us to dig further. To uncover the details behind this difference, we turn to Dunn’s Test. This test allows us to pinpoint exactly where the significant differences lie between the groups. The p-values from these tests serve as the final pieces of the puzzle, guiding us toward the answer.</p>
+            <p>Our investigation begins with a crucial discovery: we found a significant difference between the groups. This first clue leads us deeper into the mystery, prompting us to dig further. To uncover the details behind this difference, we turn to Dunn’s Test. This test allows us to pinpoint exactly where the significant differences lie between the groups. 
+                The p-values from these tests serve as the final pieces of the puzzle, guiding us toward the answer.</p>
 
             <h2>The Turning Point</h2>
             <p>As the investigation deepens, we find ourselves looking at the results of Dunn’s Test, which allows us to highlight the most significant comparisons between production companies. These comparisons reveal whether certain studios consistently lean toward specific types of endings, and the p-values serve as the final clue to this mystery.</p>
@@ -81,7 +82,8 @@
             </div>
             
             <p>In a dramatic twist, our findings reveal which production companies are most likely to influence the outcome of a film, based and production scale. We can now reveal which studios might be more inclined to deliver the ever-popular happy endings—and the reasons behind this trend.</p>
-        
+            <p>We can see that the Hammer Production has significant differences with Hollywood, the Walt Disney Pictures, the Fox 2000 Pictures, the Amblin Entertainment, and the Hollywood Pictures. As detectives piecing together the mystery of movie endings, the bar plot above became a crucial piece of evidence. It revealed that Hammer Production stands out as one of the studios with the lowest scores, a clear sign that they have a marked inclination toward crafting movies with unhappy endings. In contrast, the other production companies—Hollywood, Walt Disney Pictures, and the rest—shine as consistent producers of films with overwhelmingly happy conclusions. This pivotal clue brings us one step closer to unraveling the enigma of how studios shape the emotional journeys of their audiences.</p>
+
             <h2>The Final Chapter</h2>
             <p>With the data analyzed and the tests completed, we can confidently say that the production company plays a significant role in determining the type of ending a movie will have. Some production houses are more likely to opt for endings that appeal to mass audiences, especially happy endings. However, as in any good detective story, the plot is never completely simple, and the nuances of individual films still carry their weight in the narrative.</p>
         
