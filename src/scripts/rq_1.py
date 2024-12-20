@@ -17,7 +17,7 @@ import matplotlib.colors as mcolors
 
 # Define constants
 DATA_FOLDER = '../data/'
-MOVIE_DATASET = DATA_FOLDER + 'movies_dataset_final_1.tsv'
+MOVIE_DATASET = DATA_FOLDER + 'movies_dataset_final.tsv'
 copper_colorscale = [
     (255 / 255, 242 / 255, 230 / 255),
     (230 / 255, 169 / 255, 148 / 255),
