@@ -26,10 +26,15 @@
         }
 
         .right-content {
-            flex: 1; /* Partie droite avec le texte et le second iframe */
+            flex: 1; /* Partie droite avec le texte */
             display: flex;
             flex-direction: column;
             gap: 20px;
+        }
+
+        .bottom-content {
+            width: 100%; /* Prend toute la largeur en bas */
+            margin-top: 20px;
         }
 
         iframe {
@@ -81,7 +86,7 @@
                 </iframe>
             </div>
 
-            <!-- Texte et graphique secondaire à droite -->
+            <!-- Texte à droite -->
             <div class="right-content">
                 <div>
                     <h3>Cultural Differences: Cracking the Case</h3>
@@ -89,12 +94,16 @@
                     <p>Surprisingly, the countries with the lowest average scores—South Korea, Hong Kong, and Italy—stood out for their highly regarded yet emotionally complex cinematic traditions. These results suggest that films from these regions often embrace nuanced or bittersweet endings rather than straightforward "happily ever afters."</p>
                     <p>On the other hand, countries like India, Australia, and the United States displayed slightly higher average scores, hinting at a potential preference for more uplifting narratives. Does this reflect cultural optimism, or perhaps a market-driven approach to storytelling?</p>
                 </div>
-                <iframe 
-                    id="iframe2" 
-                    src="../assets/img/plotly_boxplot_countries.html"
-                    style="width: 100%; height: 400px;">
-                </iframe>
             </div>
+        </section>
+
+        <!-- Graphique secondaire en bas -->
+        <section class="bottom-content">
+            <iframe 
+                id="iframe2" 
+                src="../assets/img/plotly_boxplot_stripplot_countries.html"
+                style="width: 100%; height: 400px;">
+            </iframe>
         </section>
 
     </main>
