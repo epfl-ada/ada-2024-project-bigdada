@@ -62,9 +62,16 @@
                 style="width: 100%; border: none;">
             </iframe>
             <p>Mmmh... it is not a surprising result. Indeed, we can see that the genres with the highest ending scores are romantic comedies, musicals, children's movies and romance movies. On the other hand, most terrible ending movies are the horror movies, the psychological thrillers and the crime thrillers. Our prominent genre 'drama' doesn't have a particularly high or low ending score, probably because of how many movies it contains. So from the looks of it, the ending scores do differ from one genre to another and might be linked indeed! </p>
-            <p>It's time to bring in our forensic expert – the Dunn test! Like a seasoned investigator, the Dunn test will carefully compare the genres to uncover significant differences in their ending scores. But before diving into this interrogation, we had to follow proper investigative protocols.</p>
+            <p>It's time to bring in our forensic expert – the 
+                <button onclick="showModal('dunn')" class="info-btn">Dunn test</button>! 
+                Like a seasoned investigator, the Dunn test will carefully compare the genres to uncover significant differences in their ending scores. But before diving into this interrogation, we had to follow proper investigative protocols.
+            </p>
             <p>First, we checked whether our suspects (genres) followed a normal distribution using the Shapiro-Wilk test. The results? A clear violation of normality! This ruled out the possibility of using a straightforward ANOVA test to analyze the differences in ending scores.</p>
-            <p>So, we pivoted to a more robust approach – the Kruskal-Wallis test, perfect for handling such unruly data. <button onclick="showModal('kruskal')" class="info-btn">What is the Kruskal-Wallis Test?</button> This test confirmed that there is indeed a statistical significance in the distribution of ending scores across genres. Armed with this clue, we moved to the next stage: a pair-wise Dunn's test <button onclick="showModal('dunn')" class="info-btn">What is the Dunn's Test?</button> to uncover which genres have significant differences in their scores (p-value < 0.05).</p>
+            <p>So, we pivoted to a more robust approach – the 
+                <button onclick="showModal('kruskal')" class="info-btn">Kruskal-Wallis test</button>, 
+                perfect for handling such unruly data. This test confirmed that there is indeed a statistical significance in the distribution of ending scores across genres. Armed with this clue, we moved to the next stage: a pair-wise 
+                <button onclick="showModal('dunn')" class="info-btn">Dunn's test</button> to uncover which genres have significant differences in their scores (p-value < 0.05).
+            </p>
             <p>Imagine each genre as a suspect in our case. The Dunn test interrogates these suspects, comparing their alibis (mean ending scores) and identifying the key outliers. Who’s responsible for the happiest endings? And which genres are leaving audiences in despair?</p>
             <p>To visualize our findings, we've prepared a heatmap. This heatmap highlights the significant differences in ending scores between genres. Brighter colors indicate the genres that truly stand out in our interrogation. Let’s reveal the evidence:</p>
             <iframe 
@@ -72,6 +79,88 @@
                 src="../assets/img/dunn_test.html" 
                 style="width: 100%; border: none;">
             </iframe>
+            <p>Case closed? Not quite. While the Dunn test sheds light on the relationships between genres, the full picture requires considering all clues together. Stay sharp, detective – the next file might hold even more surprises!</p>
+            
+            <!-- Modal Section -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <div id="modal-text"></div>
+                </div>
+            </div>
+            
+            <!-- Modal Styles -->
+            <style>
+                .info-btn {
+                    background-color: #b87333; /* Copper color */
+                    color: white;
+                    border: none;
+                    padding: 3px 8px;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    font-size: 0.9em;
+                    text-decoration: none;
+                    display: inline;
+                }
+                .info-btn:hover {
+                    background-color: #d28b4d; /* Slightly lighter copper on hover */
+                }
+                .modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    justify-content: center;
+                    align-items: center;
+                }
+                .modal-content {
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 10px;
+                    text-align: center;
+                    width: 80%;
+                    max-width: 500px;
+                }
+                .close-btn {
+                    color: #aaa;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+                .close-btn:hover {
+                    color: black;
+                }
+            </style>
+            
+            <!-- Modal Scripts -->
+            <script>
+                function showModal(test) {
+                    const modalText = document.getElementById('modal-text');
+                    if (test === 'kruskal') {
+                        modalText.innerHTML = `
+                            <h3>Kruskal-Wallis Test</h3>
+                            <p>The Kruskal-Wallis test is a non-parametric method for testing whether samples originate from the same distribution. It’s used as an alternative to one-way ANOVA when the assumption of normality is not met.</p>
+                            <p>This test evaluates if there are statistically significant differences between the medians of three or more groups.</p>
+                        `;
+                    } else if (test === 'dunn') {
+                        modalText.innerHTML = `
+                            <h3>Dunn's Test</h3>
+                            <p>Dunn’s test is a post-hoc analysis performed after a Kruskal-Wallis test indicates significant differences among groups. It allows for pairwise comparisons between group medians, adjusting for multiple testing.</p>
+                            <p>A p-value < 0.05 indicates a significant difference between two groups.</p>
+                        `;
+                    }
+                    document.getElementById('modal').style.display = 'flex';
+                }
+            
+                function closeModal() {
+                    document.getElementById('modal').style.display = 'none';
+                }
+            </script>
+
 </script>
 <script>
     function resizeIframe(iframe) {
