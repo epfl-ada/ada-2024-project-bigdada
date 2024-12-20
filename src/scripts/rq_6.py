@@ -30,6 +30,7 @@ from scipy.stats import shapiro, levene, f_oneway, kruskal
 import networkx as nx
 import scikit_posthocs as sp
 import plotly.io as pio
+import os
 
 
 
@@ -44,7 +45,7 @@ copper_colorscale = [
 
 
 # path
-DATA_FOLDER = '../../src/data/'
+DATA_FOLDER = 'src/data/'
 MOVIE_DATASET = DATA_FOLDER + 'movies_dataset_final.tsv'
 
 # Dataset loading
@@ -449,7 +450,7 @@ def save_all_plots_html(output_folder):
     print(f"HTML saved to: {output_file}")  # Print the saved file location
 
 
-output_folder = ""  # Remplacez par votre répertoire de sauvegarde
+output_folder = "assets/img/"  
 save_all_plots_html(output_folder)
 
 
